@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+    @keyframes first{
+	  from{
+	    height:200px;
+	  }
+	  to{
+	    height:400px;
+	  }
+	}
+    .one{
+	  width:200px; height:200px; border:1px solid red;
+	  animation:first 2s ease;
+	}
+  </style>
+  <script>
+/*
+    window.onload=function(){
+	  var div=document.getElementsByTagName("div")[0];
+	  setTimeout(function(){
+	    div.style.animationPlayState="paused";
+	  },2000);
+	}
+
+//animationend:当animation执行完成后js调用的事件
+//animationend moz内核
+//webkitAnimationEnd webkit内核
+//oAnimationEnd opera内核
+//MSAnimationEnd IE 内核
+*/
+    window.onload=function(){
+	  var div=document.getElementsByTagName("div")[0];
+	  div.addEventListener("animationend",function(){
+	    div.style.height="400px";
+	  },false)
+	}
+  </script>
+ </head>
+ <body>
+  <div class="one"></div>
+ </body>
+</html>

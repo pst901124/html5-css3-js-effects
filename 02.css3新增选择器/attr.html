@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+    div{width:200px; height:200px; border:1px solid red;}
+	div[aa]{
+	  border:1px solid blue;
+	}
+	div[aa=bb]{
+	  border:4px solid blue;
+	}
+/*	结尾匹配*/
+	div[aa$=aa]{
+	  border:10px solid blue;
+	}
+/*	开始匹配*/
+	div[aa^=aa]{
+	  border:2px solid blue;
+	}
+/*	包含*/
+	div[aa*=aa]{
+	  border:2px solid blue;
+	}
+  </style>
+ </head>
+ <body>
+  <div aa="aacc"></div>
+  <div aa="ccaa"></div>
+  <div aa="bb"></div>
+  <div dd="cc"></div>
+ </body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+    *{ padding:0; margin:0;}
+	li{ list-style:none;}
+	.cont{ 
+	width:1134px; height:405px;
+	border:1px solid red;
+	margin:150px auto 0;
+	overflow:hidden;
+	}
+	.cont ul li{ 
+	width:118px; height:405px;
+	border-left:1px solid #000; float:left;
+	position:relative;
+	cursor:pointer;
+	}
+	.cont ul li p{
+	 width:538px; height:405px;
+	 background:#000;
+	 position:absolute;
+	 top:0;
+	 right:0;
+	 opacity:0.5;
+	}
+	.cont ul li:hover p{ opacity:0;}
+	.cont ul li.on{
+	  width:538px; height:405px;
+	}
+  </style>
+ </head>
+ <body>
+  <div class="cont">
+    <ul>
+	  <li><img src="1.jpg"> <p></p></li>
+	  <li><img src="2.jpg"> <p></p></li>
+	  <li><img src="3.jpg"> <p></p></li>
+	  <li><img src="4.jpg"> <p></p></li>
+	  <li><img src="5.jpg"> <p></p></li>
+	  <li><img src="6.jpg"> <p></p></li>
+	</ul>
+  </div>
+  <script src="jquery-1.8.3.js"></script>
+  <script>
+    $(function(){
+	  $('.cont ul li').hover(function(){
+	    $(this).stop(true).animate({width:'538px'},500).siblings().stop(true).animate({width:'118px'},500);
+		$(this).find('p').addClass('on').parent().siblings().find('p').removeClass('on');
+	  });
+	});
+  </script>
+ </body>
+</html>

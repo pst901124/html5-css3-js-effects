@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+    .one{
+	  width:200px; height:200px; border:1px solid red;
+/*过渡css属性名称
+	  transition-property:none|all|property
+*/
+/*过渡时间 单位秒或毫秒
+      transition-duration:time(s/ms)
+*/
+/*规定过渡效果的时间曲线 默认ease
+  linear:规定相同速度开始至结束(等于cubic-bezier(0,0,1,1))
+  ease:规定慢速开始，然后变快，然后慢速结束(cubic-bezier(0.25,0.1,0.25,1))
+  ease-in:规定以慢速开始的过渡效果(等于cubic-bezier(0,0,0.58,1))
+  ease-in-out:规定慢速开始和结束的过渡效果(等于cubic-bezier(0.42,0,0.58,1))
+  cubic-bezier(n,n,n,n):在cubic-bezier函数中定义自己的值。可能的值是0至1之间的值；
+	  transition-timing-function:ease;
+*/
+/*规定效果开始前等待时间
+	  transition-delay:time;
+*/
+/*	  -wibkit-transition:property duration timing-function delay;*/
+	  -webkit-transition:all 2s cubic-bezier(0.2,-0.1,0.8,1.3) 2s;
+	  -moz-transition:all 2s ease-in;
+	}
+	.one:hover{
+	  width:500px;
+	}
+  </style>
+ </head>
+ <body>
+  <div class="one"></div>
+ </body>
+</html>

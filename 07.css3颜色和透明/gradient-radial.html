@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+    <style>
+	  div{
+	    width:200px; height:200px;
+/*	    background:-webkit-gradient(type,x1 y1,r1,x2 y2,r2,from(开始颜色),to(结束颜色),color-stop(偏移量小数,停靠颜色值),....);*/
+        background:-webkit-gradient(radial,100 100,0,100 100,100,
+		from(#000),
+		to(#fff),
+		color-stop(0.2,red),color-stop(0.5,blue),color-stop(0.9,green));
+/*		background: -webkit-gradient(radial, center center, 0, center center, 100, from(#ace), to(#f96)); */
+/*		background:-moz-radial-gradient([<point> || <angle>,]? [<shape> || <size>,]? <stop>,<stop>[,<stop>]*);*/
+		background:-moz-radial-gradient(circle closest-side,
+		rgb(255,0,0) 14%,rgb(0,255,0) 55%,rgb(0,0,255) 90%);
+/*IE10无效*/
+		filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#9999ff,endColorStr=#ffff0000);
+
+	  }
+	</style>
+ </head>
+ <body>
+  <div></div>
+ </body>
+</html>

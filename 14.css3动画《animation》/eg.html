@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+    div{
+	  width:200px; height:100px; background:red;
+	}
+	@keyframes first{
+	  0%{
+	    width:200px;
+	  }
+	  100%{
+	    width:400px;
+	  }
+	}
+	@keyframes second{
+	  0%{
+	    width:400px;
+	  }
+	  100%{
+	    width:200px;
+	  }
+	}
+    .one{
+	  animation:first 2s ease;
+	  animation-play-state:paused;
+	}
+	.two{
+	  animation:second 2s ease;
+
+	}
+  </style>
+  <script>
+    window.onload=function() {
+	  var div=document.getElementsByTagName("div")[0];
+	  var btn=document.getElementsByTagName("input")[0];
+	  btn.onclick=function(){
+	    div.style.animationPlayState="running";
+	  }
+		div.addEventListener("animationend",function(){
+          div.style.animationPlayState="paused";
+		  if(div.className=="one"){
+		    div.style.width="400px";
+			div.className="two";
+		  }else{
+		    div.style.width="200px";
+			div.className="one";
+		  }
+		},false);
+	}
+  </script>
+ </head>
+ <body>
+  <div class="one"></div>
+  <input type="button" value="切换">
+ </body>
+</html>

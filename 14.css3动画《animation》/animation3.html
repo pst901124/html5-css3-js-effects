@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+    .one{
+	  width:200px; height:200px; border:1px solid red;
+	  transition:width 2s ease;
+	}
+	.one:hover{
+	  width:400px;
+	}
+  </style>
+  <script>
+    window.onload=function(){
+//transitionend:当transition执行完成后js调用的事件
+//transitionend moz内核
+//webkitTransitionEnd webkit内核
+//oTransitionEnd opera内核
+//MSTransitionEnd IE 内核
+	  var div=document.getElementsByTagName("div")[0];
+	  div.addEventListener("transitionend",function(){
+	    div.style.width="400px";
+	  },false);
+	}
+
+  </script>
+ </head>
+ <body>
+  <div class="one"></div>
+ </body>
+</html>

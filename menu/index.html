@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	  *{ margin:0; padding:0;}
+	  li{ list-style:none;}
+	  a {color:blue; text-decoration:none;}
+	  html,body{ width:100%; height:100%;}
+	  body{ background:url("1.jpg") no-repeat center center / cover;}
+	  nav{ width:80%; height:45px; border:1px solid #fff; margin:150px auto 0; border-radius:10px; background:-webkit-linear-gradient(top,#eee,#aaa); -webkit-perspective:600px; }
+	  nav > ul{ display:-webkit-box;}
+	  nav > ul > li{ -webkit-box-flex:1; line-height:45px; text-align:center;}
+	  nav > ul > li > a:hover{ background:#444; height:45px; color:#fff; border-radius:10px;}
+	  nav > ul > li  a{ display:block;}
+	  .sub_nav{ -webkit-transform-style: preserve-3d; height:0; overflow:hidden}
+	  .sub_nav li:nth-child(1){ -webkit-transition-delay:250ms;}
+	  .sub_nav li:nth-child(2){ -webkit-transition-delay:200ms;}
+	  .sub_nav li:nth-child(3){ -webkit-transition-delay:150ms;}
+	  .sub_nav li:nth-child(4){ -webkit-transition-delay:100ms;}
+	  .sub_nav li:nth-child(5){ -webkit-transition-delay:50ms;}
+	  .sub_nav li:nth-child(6){ -webkit-transition-delay:0ms;}
+	  .sub_nav li{ border:2px solid #fff; margin:2px 0; transform:rotateY(180deg); transition:all 0.5s linear; opacity:0;}
+	  .sub_nav li:hover{ box-shadow:0 0 8px #fff;}
+	  .sub_nav li a{ color:#fff;}
+	  .sub_nav li a:hover{ color:hotpink; text-shadow:0 0 .05px #fff;}
+	  nav > ul > li:hover .sub_nav{ height:auto;}
+	  nav > ul > li:hover .sub_nav li{ transform:rotateY(0deg); opacity:1;}
+	  nav > ul > li:hover .sub_nav li:nth-child(1){-webkit-transition-delay:0ms;}
+	  nav > ul > li:hover .sub_nav li:nth-child(2){-webkit-transition-delay:50ms;}
+	  nav > ul > li:hover .sub_nav li:nth-child(3){-webkit-transition-delay:100ms;}
+	  nav > ul > li:hover .sub_nav li:nth-child(4){-webkit-transition-delay:150ms;}
+	  nav > ul > li:hover .sub_nav li:nth-child(5){-webkit-transition-delay:200ms;}
+	  nav > ul > li:hover .sub_nav li:nth-child(6){-webkit-transition-delay:250ms;}
+	</style>
+</head>
+<body>
+	<nav>
+	  <ul>
+	    <li>
+		<a href="#">公司概况</a>
+			<ul class="sub_nav">
+				<li><a href="#">公司简介</a></li>
+				<li><a href="#">组织架构</a></li>
+				<li><a href="#">企业文化</a></li>
+				<li><a href="#">发展战略</a></li>
+			</ul>
+		</li>
+	    <li>
+		<a href="#">公司概况</a>
+			<ul class="sub_nav">
+				<li><a href="#">公司简介</a></li>
+				<li><a href="#">组织架构</a></li>
+				<li><a href="#">企业文化</a></li>
+				<li><a href="#">发展战略</a></li>
+			</ul>
+		</li>
+	    <li>
+		<a href="#">公司概况</a>
+			<ul class="sub_nav">
+				<li><a href="#">公司简介</a></li>
+				<li><a href="#">组织架构</a></li>
+				<li><a href="#">企业文化</a></li>
+				<li><a href="#">发展战略</a></li>
+			</ul>
+		</li>
+	    <li>
+		<a href="#">公司概况</a>
+			<ul class="sub_nav">
+				<li><a href="#">公司简介</a></li>
+				<li><a href="#">组织架构</a></li>
+				<li><a href="#">企业文化</a></li>
+				<li><a href="#">发展战略</a></li>
+			</ul>
+		</li>
+	    <li>
+		<a href="#">HTML5 学堂</a>
+		</li>
+	    <li>
+		<a href="#">公司概况</a>
+			<ul class="sub_nav">
+				<li><a href="#">公司简介</a></li>
+				<li><a href="#">组织架构</a></li>
+				<li><a href="#">企业文化</a></li>
+				<li><a href="#">发展战略</a></li>
+			</ul>
+		</li>
+	  </ul>
+	</nav>
+</body>
+</html>

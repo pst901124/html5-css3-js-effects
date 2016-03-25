@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>导航</title>
+  <link href="css/style.css" type="text/css" rel="stylesheet">
+ </head>
+ <body>
+  <div id="nav">
+    <ul>
+	  <li>
+	    <dl>
+	    <dt>衣服</dt>
+		  <dd>
+		    <a href="#">初夏新款</a>
+		    <a href="#">衬衫</a>
+		    <a href="#">短袖体恤</a>
+		    <a href="#">轻薄外套</a>
+		    <a href="#">初夏美裙</a>
+		    <a href="#">初夏美裙</a>
+		</dd>
+		</dl>
+		<div class="con"></div>
+		<div class="right"></div>
+		<div class="top"></div>
+		<div class="bottom"></div>
+	  </li>
+	  <li>
+	    <dl>
+	    <dt>衣服</dt>
+		  <dd>
+		    <a href="#">初夏新款</a>
+		    <a href="#">衬衫</a>
+		    <a href="#">体恤</a>
+		    <a href="#">外套</a>
+		</dd>
+		</dl>
+		<div class="con"></div>
+		<div class="right"></div>
+		<div class="top"></div>
+		<div class="bottom"></div>
+	  </li>
+	  <li>
+	    <dl>
+	    <dt>衣服</dt>
+		  <dd>
+		    <a href="#">初夏新款</a>
+		    <a href="#">衬衫</a>
+		    <a href="#">体恤</a>
+		    <a href="#">外套</a>
+		</dd>
+		</dl>
+		<div class="con"></div>
+		<div class="right"></div>
+		<div class="top"></div>
+		<div class="bottom"></div>
+	  </li>
+	  <li>
+	    <dl>
+	    <dt>衣服</dt>
+		  <dd>
+		    <a href="#">初夏新款</a>
+		    <a href="#">衬衫</a>
+		    <a href="#">体恤</a>
+		    <a href="#">外套</a>
+		</dd>
+		</dl>
+		<div class="con"></div>
+		<div class="right"></div>
+		<div class="top"></div>
+		<div class="bottom"></div>
+	  </li>
+	  <li>
+	    <dl>
+	    <dt>衣服</dt>
+		  <dd>
+		    <a href="#">初夏新款</a>
+		    <a href="#">衬衫</a>
+		    <a href="#">体恤</a>
+		    <a href="#">外套</a>
+		</dd>
+		</dl>
+		<div class="con"></div>
+		<div class="right"></div>
+		<div class="top"></div>
+		<div class="bottom"></div>
+	  </li>
+	  <li>
+	    <dl>
+	    <dt>衣服</dt>
+		  <dd>
+		    <a href="#">初夏新款</a>
+		    <a href="#">衬衫</a>
+		    <a href="#">体恤</a>
+		    <a href="#">外套</a>
+		</dd>
+		</dl>
+		<div class="con"></div>
+		<div class="right"></div>
+		<div class="top"></div>
+		<div class="bottom"></div>
+	  </li>
+	</ul>
+  </div>
+  <script src="js/jquery-2.1.4.js"></script>
+  <script>
+    $("#nav ul li").hover(function(){
+	  var _top=$(this).position().top;
+	  //alert(_top);
+	  var _height=$(this).find(".con").height()/3.3;
+	  if(_top>_height){
+	    $(this).find(".con").css("top","-"+_height+"px");
+	  }
+	  $(this).addClass("hover");
+	},function(){
+	  $(this).removeClass("hover");
+	});
+   
+  </script>
+ </body>
+</html>

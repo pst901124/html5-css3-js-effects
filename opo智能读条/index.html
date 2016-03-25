@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>opp智能读条</title>
+  <style>
+    *{ margin:0; padding:0;}
+	body{ overflow:hidden;}
+	li{ list-style:none outset none;}
+	#banner{ width:100%; height:630px; position:relative;}
+	#banner ul li{ width:100%; height:630px; position:absolute; top:0; left:0; display:none;}
+	#banner ul li:nth-child(1){ background:url("images/1.jpg") center center; display:block;}
+	#banner ul li:nth-child(2){ background:url("images/2.jpg") center center;}
+	#banner ul li:nth-child(3){ background:url("images/3.jpg") center center;}
+	#banner ul li img{ position:absolute; top:0; left:-1180px;}
+	#banner .bar{ position:absolute; bottom:0; left:0; width:100%; height:80px; background:rgba(0,0,0,.5);}
+	#banner .bar .bg{ width:1175px; height:10px; background:url("images/bar.png") no-repeat; margin:35px auto;}
+	#banner .bar .bg .jd{ position:absolute; width:0px; height:10px; background:#fff; border-radius:10px; margin-top:-5px;}
+  </style>
+ </head>
+ <body>
+    <div id="banner">
+	  <ul>
+	    <li><img src="images/con1.png"></li>
+	    <li><img src="images/con2.png"></li>
+	    <li><img src="images/con3.png"></li>
+	  </ul>
+	  <div class="bar">
+	    <div class="bg">
+		  <div class="jd"></div>
+		</div>
+	  </div>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script>
+	  var i=0;
+	function auto(){
+       $("#banner ul li").eq(i).find("img").animate({left:0},500,function(){
+	    $("#banner .bar .bg .jd").animate({width:"1178px"},8000,function(){
+		  $("#banner .bar .bg .jd").css("width","0px");
+		  $("#banner ul li").eq(i).find("img").animate({left:"1180px"},500,function(){
+		    $("#banner ul li").eq(i).find("img").css("left","-1180px");
+			i++;
+			if(i>2){
+			  i=0;
+			}
+			$("#banner ul li").eq(i).fadeIn(100).siblings().fadeOut(100);
+		  });
+		});
+	  });
+	};
+      auto();
+	  setInterval("auto()",9200);
+
+	</script>
+ </body>
+</html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script src="css3.js"></script>
+  <style>
+    *{
+	  margin:0; padding:0;
+	}
+	li{
+	  list-style:none;
+	}
+    .out{
+	  width:150px; height:150px; padding:150px; border:1px solid red;
+	  margin:0 auto;
+	  perspective:600px;
+	  position:relative;
+	}
+	.box{
+	  width:150px; height:150px; position:relative;
+	  transform-style:preserve-3d;
+	  transform-origin:75px 75px 75px;
+/*	  transform:matrix3d(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1);*/
+/*	  visible 背面可见*/
+/*	  backface-visibility:hidden;*/
+	}
+	.box li{
+	  width:150px; height:150px; position:absolute;
+	  line-height:150px; text-align:center; font-size:20px;
+	}
+	.box li:nth-of-type(1){
+	   background:red; top:-150px; left:0;
+	   transform-origin:bottom;
+	   transform:rotateX(-90deg);
+	}
+	.box li:nth-of-type(2){
+	  background:pink; top:0; left:-150px;
+	   transform-origin:right;
+	   transform:rotateY(90deg);
+	}
+	.box li:nth-of-type(3){
+	  background:green; top:0; left:0;
+	}
+	.box li:nth-of-type(4){
+	  background:yellow; top:0; left:150px;
+	   transform-origin:left;
+	   transform:rotateY(-90deg);
+	}
+	.box li:nth-of-type(5){
+	  background:blue; top:150px; left:0px;
+	   transform-origin:top;
+	   transform:rotatex(90deg);
+	}
+	.box li:nth-of-type(6){
+	  background:orange; top:0; left:0;
+	   transform-origin:left;
+	   transform:translateZ(150px);
+	}
+	.btns{
+	  position:absolute; width:120px; height:30px; left:175px; top:350px;
+	}
+	.btns dd{
+	  width:15px; height:15px; border-radius:50%;
+	  box-shadow:1px 1px 2px #111;
+	  float:left; margin-left:12px;
+	  cursor:pointer;
+	  background:#ccc;
+	}
+  </style>
+  <script>
+    window.onload=function(){
+	  var box=document.getElementsByTagName("ul")[0];
+	  var btns=document.getElementsByTagName("dd");
+	  var num=0;
+	  function move(){
+		num++;
+		if(num==4){
+		  num=0;
+		}
+	    changeA(box,(num-1)*90,num*90);
+		for(var i=0; i<btns.length; i++){
+		  btns[i].style.backgroundColor="#ccc";
+		}
+        btns[num].style.backgroundColor="red";
+	  }
+	  var t=setInterval(move,3000);
+	  for(var i=0; i<btns.length; i++){
+		btns[i].index=i;
+	    btns[i].onclick=function(){
+		for(var i=0; i<btns.length; i++){
+		  btns[i].style.backgroundColor="#ccc";
+		}
+          this.style.backgroundColor="red";
+		  changeA(box,(this.index-1)*90,this.index*90);
+		  num=this.index;
+		}
+		btns[i].onmouseover=function(){
+		  clearInterval(t);
+		}
+		btns[i].onmouseout=function(){
+		  t=setInterval(move,3000);
+		}
+	  }
+	}
+    function changeA(obj,startA,endA){
+      clearInterval(obj.t);
+	  obj.t=setInterval(function(){
+		if(startA==endA){
+		  clearInterval(obj.t);
+		}else{
+			var speed=(endA-startA)*0.3;
+			speed=speed<0?Math.floor(speed):Math.ceil(speed);
+			startA+=speed;
+			setCss3(obj,{transform:"rotateY("+(startA+speed)+"deg)"});
+		    }
+		  },100);
+		
+	  }
+  </script>
+ </head>
+ <body>
+  <div class="out">
+    <ul class="box">
+	  <li>1</li>
+	  <li>2</li>
+	  <li>3</li>
+	  <li>4</li>
+	  <li>5</li>
+	  <li>6</li>
+	</ul>
+	<dl class="btns">
+	  <dd style="background:red;"></dd><dd></dd><dd></dd><dd></dd>
+	</dl>
+  </div>
+ </body>
+</html>

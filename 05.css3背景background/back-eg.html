@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+    div{ 
+	  width:500px; height:500px;
+	  background-image:url(1.jpg),url(2.jpg),url(3.jpg);
+	  background-repeat:no-repeat;
+	  background-size:contain;
+	  background-position:0px 0px,-5000px -5000px,-5000px -5000px;
+	
+	}
+  </style>
+  <script>
+    window.onload=function(){
+	  var div=document.getElementsByTagName("div")[0];
+	  var positionArr=(getStyle(div,"backgroundPosition")).split(",");
+	  var num=0;
+	  setInterval(function(){ 
+		  if(num==positionArr.length){
+		    num=0;
+		  }
+		  for(var i=0; i<positionArr.length; i++){
+		    if(i==num){
+			  positionArr[i]="0 0";
+			}else{
+			  positionArr[i]="-1000px -1000px";
+			}
+		  }
+		  div.style.backgroundPosition=positionArr.join(",");
+		  num++;
+	  },3000);
+	}
+	function getStyle(obj,attr){
+	  if(window.getComputedStyle){
+	    return getComputedStyle(obj,null)[attr];
+	  }else{
+	    return obj.currentStyle[attr];
+	  }
+	}
+  </script>
+ </head>
+ <body>
+  <div></div>
+ </body>
+</html>

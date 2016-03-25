@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script src="js/jquery-1.8.3.js"></script>
+  <style>
+    *{ margin:0; padding:0;}
+	html,body,.content{ width:100%; height:100%; font-size:12px;}
+	a{ color:#000; text-decoration:none;}
+	li{ list-style:none;}
+	.content{}
+/*	bg start*/
+	.size{ width:100%; height:100%;}
+	.div1{ background:url("img/1.jpg") center fixed no-repeat;}
+	.div2{ background:url("img/2.jpg") center fixed no-repeat;}
+	.div3{ background:url("img/3.jpg") center fixed no-repeat;}
+	.div4{ background:url("img/4.jpg") center fixed no-repeat;}
+/*	bg end*/
+
+/*	left nav start*/
+    #l-nav{ width:100px; height:325px; background:url("img/nav-bg.png") 0 1px no-repeat; position:fixed; top:30%; left:60px;}
+	#l-nav ul{ margin-top:7px;}
+	#l-nav ul li{ height:22px; line-height:22px; margin-bottom:55px; padding-left:45px; cursor:pointer;}
+    #l-nav ul li.cho{background:url("img/nav-cur.png") no-repeat;}
+	#l-nav ul li a{ color:#fff;}
+/*	left nav start*/    
+  </style>
+ </head>
+ <body>
+  <div class="content">
+    <div class="div1 size"></div>
+    <div class="div2 size"></div>
+    <div class="div3 size"></div>
+    <div class="div4 size"></div>
+  </div>
+  <div id="l-nav">
+    <ul>
+	  <li class=" cho"><a href="#">第一屏</a></li>
+	  <li><a href="#">第二屏</a></li>
+	  <li><a href="#">第三屏</a></li>
+	  <li><a href="#">第四屏</a></li>
+	</ul>
+  </div>
+  <script>
+    window.onload=function(){
+	  $(window).scroll(function(){
+	    var n=$(window).scrollTop()/$(window).height();
+		$("#l-nav ul li").eq(n).addClass("cho").siblings().removeClass("cho");
+	  });
+	  $("#l-nav ul li").click(function(){
+		_index=$(this).index();
+		$(this).addClass("cho").siblings().removeClass("cho");
+		var scrollH=((_index)*$(window).height()-$(window).scrollTop()+"px")
+	  });
+	}
+  </script>
+ </body>
+</html>

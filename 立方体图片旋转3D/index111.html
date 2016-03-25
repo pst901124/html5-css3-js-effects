@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style id="css">
+    *{
+	  margin:0; padding:0;
+	}
+	li{
+	  list-style:none;
+	}
+	#banner{
+	  width:800px; height:360px;
+	  margin:150px auto;
+	  perspective:1000px;
+	  position:relative;
+
+	}
+	#banner ul li{
+	  height:360px;
+	  float:left;
+	  position:relative;
+	  -webkit-transform-style:preserve-3d;
+	  -webkit-transform:translateZ(-180px) rotateX(0deg);
+	  -moz-transform-style:preserve-3d;
+	  -moz-transform:translateZ(-180px) rotateX(0deg);
+	  -ms-transform-style:preserve-3d;
+	  -ms-transform:translateZ(-180px) rotateX(0deg);
+	  -o-transform-style:preserve-3d;
+	  -o-transform:translateZ(-180px) rotateX(0deg);
+	}
+	#banner ul li div{
+	  height:360px;
+	  position:absolute;
+	}
+	#banner ul li div:nth-child(1){
+	  bottom:360px;
+	  transform:translateZ(180px) rotateX(90deg);
+	  transform-origin:bottom;
+	  -webkit-transform:translateZ(180px) rotateX(90deg);
+	  -webkit-transform-origin:bottom;
+	  -moz-transform:translateZ(180px) rotateX(90deg);
+	  -moz-transform-origin:bottom;
+	  -ms-transform:translateZ(180px) rotateX(90deg);
+	  -ms-transform-origin:bottom;
+	  -o-transform:translateZ(180px) rotateX(90deg);
+	  -o-transform-origin:bottom;
+	  background-image:url(img/2.png);
+	}
+	#banner ul li div:nth-child(2){
+	  top:360px;
+	  transform:translateZ(180px) rotateX(-90deg);
+	  transform-origin:top;
+	  -webkit-transform:translateZ(180px) rotateX(-90deg);
+	  -webkit-transform-origin:top;
+	  -moz-transform:translateZ(180px) rotateX(-90deg);
+	  -moz-transform-origin:top;
+	  -ms-transform:translateZ(180px) rotateX(-90deg);
+	  -ms-transform-origin:top;
+	  -o-transform:translateZ(180px) rotateX(-90deg);
+	  -o-transform-origin:top;
+	  background-image:url(img/4.png);
+	}
+	#banner ul li div:nth-child(3){
+	  transform:translateZ(180px);
+	  -webkit-transform:translateZ(180px);
+	  -moz-transform:translateZ(180px);
+	  -ms-transform:translateZ(180px);
+	  -o-transform:translateZ(180px);
+	  background-image:url(img/1.png);
+	}
+	#banner ul li div:nth-child(4){
+	 transform:translateZ(-180px) rotateX(180deg);
+	  background-image:url(img/3.png);
+	}
+	/*
+	#banner ul li:nth-child(1) div{ background-position:0;}
+	#banner ul li:nth-child(2) div{ background-position:-200px;}
+	#banner ul li:nth-child(3) div{ background-position:-400px;}
+	#banner ul li:nth-child(4) div{ background-position:-600px;}
+
+    #banner ul li:nth-child(1) {transition:1s 0s}
+	#banner ul li:nth-child(2) {transition:1s .3s}
+	#banner ul li:nth-child(3) {transition:1s .6s}
+	#banner ul li:nth-child(4) {transition:1s .9s}
+*//*	#banner:hover ul li{ transform:translateZ(-180px) rotateX(180deg);}*/
+	#banner .btn{
+	  width:100px; height:20px;
+	  position:absolute;
+	  right:5px;
+	  bottom:5px;
+    }
+    #banner .btn span{
+	  width:20px; height:20px;
+	  background:#000;
+	  border-radius:50%;
+	  box-shadow:1px 1px 5px #fff;
+	  font-family:"微软雅黑";
+	  font-size:12px;
+	  line-height:20px;
+	  text-align:center;
+	  color:#fff;
+	  float:left;
+	  margin:0 2px;
+      cursor:pointer;
+	  
+	}
+    #banner .btn span.on{
+	  background:#fff;
+	  color:#000;
+	  box-shadow:1px 1px 5px #000;
+	}
+  </style>
+ </head>
+ <body>
+  <div id="banner">
+    <ul></ul>
+	<div class="btn">
+	  <span class="on">1</span>
+	  <span>2</span>
+	  <span>3</span>
+	  <span>4</span>
+	<div>
+  </div>
+  <script src="js/jquery.js"></script>
+  <script>
+     $(function(){
+	   play(40);
+       var index=$(this).index();
+	     function move(){
+			 index++;
+			 if(index>4){
+			   index=0;
+			 }
+//	       var index=$("ol li").index()
+//		  $(this).addClass("on").siblings().removeClass("on");
+		  $("#banner ul li").css({
+			   "transform":"translateZ(-180px) rotateX("+index*90+"deg)"
+			 });
+		 }
+		 var t=setInterval(move,2500);
+	     $("#banner .btn span").click(function(){
+		   clearInterval(t);
+		   $(this).addClass("on").siblings().removeClass("on");
+           var index=$(this).index()
+		   $("#banner ul li").css({
+		     "transform":"translateZ(-180px) rotateX("+index*90+"deg)"
+		   });
+	   });
+	 })
+	 function play(x){
+	   var uHtml="";
+	   var pHtml="";
+	   var zHtml="",z=0;
+	   var tHtml="";
+	   var lW=800/x;
+	   for (var i=0; i<x; i++)
+	   {
+		   if (i>=x/2)
+		   {
+			   z--;
+			   zHtml +="#banner ul li:nth-child("+(i+1)+"){z-index:"+z+"}";
+		   }
+		   uHtml +="<li><div></div><div></div><div></div><div></div></li>";
+		   pHtml +="#banner ul li:nth-child("+(i+1)+") div{ background-position:"+(-i*lW)+"px;}";
+		   tHtml +="#banner ul li:nth-child("+(i+1)+") {transition:1s "+1*i/x+"s}"
+	   };
+	   $("#banner ul").append(uHtml);
+	   $("#banner ul li,#banner ul li div").css("width",lW+"px")
+	   $("#css").append(pHtml+zHtml+tHtml);
+	 };
+  </script>
+ </body>
+</html>

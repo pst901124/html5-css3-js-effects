@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--声明当前页面的编码格式 国际编码 UTF-8  中午编码 GBK-->
+	<meta charset="utf-8">
+	<!--声明当前页面的三要素-->
+	<meta name="Keywords" content="关键词，关键词">
+	<meta name="description" content="描述">
+	<title>js+css相册拖拽</title>
+	<!--样式css 修饰 衣服 化妆品-->
+	<style type="text/css">
+	*{margin:0;padding:0;}
+	body{ width:100%; height:100%; background:url("images/bg.jpg") no-repeat center top / cover;}
+	#top{ width:1040px;	margin:30px auto 30px; background:rgba(255,255,255,0.8); border-radius:10px; padding:20px 10px;	text-align:center;}
+	#top img{ width:80px; height:120px;	margin-left:5px;}
+	
+	#con{ width:1060px;	height:700px; margin:0 auto; border-radius:10px; background:rgba(255,255,255,0.8); position:relative;}
+	#con img{position:absolute;	border:10px solid #fff;	}
+	#con img:nth-of-type(1){left: 20px; top: 60px; border-radius: 50%; -webkit-transform: rotate(-5deg); -moz-transform: rotate(-5deg); transform: rotate(-5deg);}
+    #con img:nth-of-type(2){ top: 0; left: 200px; -webkit-transform: rotate(-20deg); -moz-transform: rotate(-20deg); transform: rotate(-20deg);}
+	#con img:nth-of-type(3){ top: 60px; left: 400px; border-radius: 50%; -webkit-transform: rotate(5deg); -moz-transform: rotate(5deg); transform: rotate(5deg);}
+	#con img:nth-of-type(4){ top: 0; left: 600px; border-radius: 10px; -webkit-transform: rotate(-10deg); -moz-transform: rotate(-10deg); transform: rotate(-10deg);}
+	#con img:nth-of-type(5){ top: 60px; left: 800px; border-radius: 50%; -webkit-transform: rotate(-10deg); -moz-transform: rotate(-10deg); transform: rotate(-10deg);}
+	#con img:nth-of-type(6){ bottom: 0px;  left: 0px; border-radius: 20px; -webkit-transform: rotate(10deg); -moz-transform: rotate(10deg); transform: rotate(10deg);}
+	#con img:nth-of-type(7){ top: 330px; left: 200px; border-radius: 50%; -webkit-transform: rotate(20deg); -moz-transform: rotate(20deg); transform: rotate(20deg);}
+	#con img:nth-of-type(8){ bottom: 0px; left: 400px; border-radius: 30px; -webkit-transform: rotate(5deg); -moz-transform: rotate(5deg); transform: rotate(5deg);}
+	#con img:nth-of-type(9){ top: 330px; left: 600px; border-radius: 50%; -webkit-transform: rotate(15deg); -moz-transform: rotate(15deg); transform: rotate(15deg);}
+	#con img:nth-of-type(10){ bottom: 0px; left:800px; border-radius: 40px; -webkit-transform: rotate(-10deg); -moz-transform: rotate(-10deg); transform: rotate(-10deg);}
+	#con img:hover{ box-shadow:15px 15px 20px rgba(50, 50, 50, 0.4); -webkit-transform:rotate(0deg) scale(1.20); -moz-transform:rotate(0deg) scale(1.20); 	transform:rotate(0deg) scale(1.20); z-index:2;}
+	</style>
+</head>	
+<body>
+	<div id="top" draggable="true" ondrop="drop(event)" ondragover="allowDrop(event)">
+		<img id="drge1" src="images/img-1.jpg" ondragstart="drag(event)"/>
+		<img id="drge2" src="images/img-2.jpg" ondragstart="drag(event)"/>
+		<img id="drge3" src="images/img-3.jpg" ondragstart="drag(event)"/>
+		<img id="drge4" src="images/img-4.jpg" ondragstart="drag(event)"/>
+		<img id="drge5" src="images/img-5.jpg" ondragstart="drag(event)"/>
+		<img id="drge6" src="images/img-6.jpg" ondragstart="drag(event)"/>
+		<img id="drge7" src="images/img-7.jpg" ondragstart="drag(event)"/>
+		<img id="drge8" src="images/img-8.jpg" ondragstart="drag(event)"/>
+		<img id="drge9" src="images/img-9.jpg" ondragstart="drag(event)"/>
+		<img id="drge10" src="images/img-10.jpg" ondragstart="drag(event)"/>
+	</div>
+	
+	<div id="con" ondrop="drop(event)" ondragover="allowDrop(event)">
+		
+	</div>
+	<script src="js/jquery-2.1.4.js"></script>
+	<script>
+	var lis=$('img');
+	for(var i=0;i<lis.length;i++){
+		lis[i].addEventListener("drop",function(ev){
+			ev.stopPropagation();
+			});
+	}
+	function allowDrop(ev){
+		ev.preventDefault();
+	}
+	function drag(ev){
+		ev.dataTransfer.setData("Text",ev.target.id);
+	}
+	function drop(ev){
+		ev.preventDefault();
+		var data = ev.dataTransfer.getData("Text");
+		ev.target.appendChild(document.getElementById(data));
+	}
+	</script>
+</body>
+</html>

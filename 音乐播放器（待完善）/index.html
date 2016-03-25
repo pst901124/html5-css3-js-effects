@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>音乐播放器</title>
+  <style>
+    *{ margin:0; padding:0;}
+	li{ list-style:none;}
+	#p_list{ width:960px; height:250px; background:url("img/banner_bg.jpg"); margin:100px auto 0; position:relative;}
+	#p_list ul li{ position:absolute; cursor:pointer;}
+	#p_list ul li img{ border-radius:50%;}
+	#p_list ul li:nth-child(1){top:50px; left:10px;}
+	#p_list ul li:nth-child(2){top:90px; left:160px;}
+	#p_list ul li:nth-child(3){top:75px; left:315px;}
+	#p_list ul li:nth-child(4){top:20px; left:490px;}
+	#p_list ul li:nth-child(5){top:10px; left:575px;}
+/*  .rotate{ transition:all 2s infinite linear; transform:rotate(360deg);}*/
+	.rotate{ animation:rot 2s infinite linear;}
+	@keyframes rot{
+	  from{transform:rotate(0deg);}
+	  to{transform:rotate(360deg);}
+	}
+
+	#but{ width:520px; height:116px; background:#000; position:fixed; bottom:40px; left:0;}
+	#but .pic img{ float:left; width:90px; height:90px; margin:10px 0 0 15px;}
+	#but .text{ float:left; width:150px; color:#fff; line-height:116px; margin-left:10px; font-weight:bold;}
+	#but .b_click{ float:left; width:150px; height:90px; margin-top:40px;}
+	#but .b_click a{ float:left; display:block; margin-left:10px;}
+	
+	#but .b_click a.pre{ width:20px; height:35px;  background:url("img/player_bg.png") -77px 0 no-repeat;}
+	#but .b_click a.play{ width:30px; height:35px;  background:url("img/player_bg.png") -113px -3px no-repeat;}
+	#but .b_click a.pause{ width:30px; height:35px;  background:url("img/player_bg.png") -300px -93px no-repeat;}
+	#but .b_click a.next{ width:20px; height:35px;  background:url("img/player_bg.png") -155px 0 no-repeat;}
+	#but .close{ float:right; width:23px; height:116px; background:url("img/player_bg.png"); cursor:pointer;}
+  </style>
+ </head>
+ <body>
+  <div id="p_list">
+    <ul>
+	  <li dear="mp3/1.mp3">
+	    <img src="img/1.jpg" width="55" title="烛光里的妈妈">
+	  </li>
+	  <li  dear="mp3/2.mp3">
+	    <img src="img/2.jpg" width="65" title="当你老了">
+	  </li>
+	  <li  dear="mp3/3.mp3">
+	    <img src="img/3.jpg" width="105" title="母亲">
+	  </li>
+	  <li  dear="mp3/4.mp3">
+	    <img src="img/4.jpg" width="65" title="相亲相爱一家人">
+	  </li>
+	  <li  dear="mp3/5.mp3">
+	    <img src="img/5.jpg" width="55" title="雄心壮志">
+	  </li>
+	</ul>
+  </div>
+  <div id="but">
+    <div class="pic"> <img src="img/1.jpg"></div>
+	<div class="text">烛光里的妈妈</div>
+	<div class="b_click">
+	  <a href="javascript:void(0)" class="pre"><a/>
+	  <a href="javascript:void(0)" class="play"><a/>
+	  <a href="javascript:void(0)" class="next"><a/>
+	</div>
+	 <div class="close"></div>
+  </div>
+  <audio src="mp3/1.mp3" id="yy"></audio>
+
+  <script src="js/jquery-1.11.1.min.js"></script>
+  <script>
+    var audio = $("#yy").get(0);
+	var kg=0;
+	var _index=0;
+	var musrc;
+	var text;
+	var imgSrc;
+	var num=0;
+    $("#p_list ul li").click(function(){
+	  musrc=$(this).attr("dear");
+	  text=$(this).find("img").attr("title");
+	  imgSrc=$(this).find("img").attr("src");
+	  _index=$(this).index();
+	  audio.src=musrc;
+	  audio.play();
+	  $("#but .b_click a.play").addClass("pause");
+	  $("#but .text").text(text);
+	  $("#but .pic img").attr("src",imgSrc);
+	  $(this).addClass("rotate").siblings().removeClass("rotate");
+	  kg=1;
+	});
+
+	$("#but .b_click a.play").click(function(){
+      if(kg==0){
+	    audio.play();
+	    $(this).addClass("pause");
+	    kg=1;
+	  }else{
+	    audio.pause();
+	    $(this).removeClass("pause");
+		$("#p_list ul li").removeClass("rotate");
+	    kg=0;
+	  }
+	});
+
+	$("#but .b_click a.pre").click(function(){
+	  _index--;
+	  if(_index<0){
+	    _index=4
+	  }
+	  musrc=$("#p_list ul li").attr("dear");
+	  text=$("#p_list ul li").find("img").attr("title");
+	  imgSrc=$("#p_list ul li").find("img").attr("src");
+	  audio.src=musrc;
+	  audio.play();
+	  $("#but .b_click a.play").addClass("pause");
+	  $("#but .text").text(text);
+	  $("#but .pic img").attr("src",imgSrc);
+	  $("#p_list ul li").eq(_index).addClass("rotate").siblings().removeClass("rotate");
+	  kg=1;
+	});
+
+	$("#but .b_click a.next").click(function(){
+	  _index++;
+	  if(_index>4){
+	    _index=0
+	  }
+	  musrc=$("#p_list ul li").attr("dear");
+	  text=$("#p_list ul li").find("img").attr("title");
+	  imgSrc=$("#p_list ul li").find("img").attr("src");
+	  audio.src=musrc;
+	  audio.play();
+	  $("#but .b_click a.play").addClass("pause");
+	  $("#but .text").text(text);
+	  $("#but .pic img").attr("src",imgSrc);
+	  $("#p_list ul li").eq(_index).addClass("rotate").siblings().removeClass("rotate");
+	  kg=1;
+
+	});
+
+	 $("#but .close").click(function(){
+	   if(num==0){
+	     $("#but").animate({left:"-497px"},500);
+		 num=1;
+	   }else{
+	     $("#but").animate({left:"0"},500);
+		 num=0;
+	   }
+	   
+	 });
+  </script>
+ </body>
+</html>

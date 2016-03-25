@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+  /*
+    body{
+	  perspective:600px;
+	}
+	*/
+    .out{
+	  width:300px; height:300px; border:1px solid red; margin:0 auto;
+	  perspective:600px;
+/*	  perspective-origin:灭点 */
+	  perspective-origin:50px 50px;
+/*	  transform:rotateY(40deg);*/
+/*preserve-3d:影响子元素 flat:不影响子元素*/
+/*	  transform-style:preserve-3d;*/
+	}
+	.inner{
+	  width:200px; height:200px; border:1px solid blue; margin:50px 0 0 50px;
+/*	  transform-origin:bottom center -100px;*/
+	  transform:rotateX(60deg);
+	}
+  </style>
+ </head>
+ <body>
+  <div class="out">
+    <div class="inner"></div>
+  </div>
+ </body>
+</html>

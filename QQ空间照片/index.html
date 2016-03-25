@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>QQ空间照片</title>
+  <style>
+    *{ margin:0; padding:0;}
+	body{ background:#ddd;}
+    #xc{ width:984px; min-height:615px; background:#f69; margin:20px auto 0;}
+	#xc img{ display:block; float:left; border:4px solid #fff; margin:5px 10px;}
+    .gray{ width:100%; height:100%; background:rgba(0,0,0,.5); position:fixed; top:0; left:0; display:none;}
+	.big_img{width:650px; height:406px; position:fixed; top:50%; left:50%; margin-left: -325px; margin-top: -203px; display:none;}
+	.big_img .btn_left{ position:absolute; left:-80px; top:50%; margin-top:-18px;}
+ 	.big_img .btn_right{ position:absolute; right:-80px; top:50%; margin-top:-18px;}
+    .big_img .show_img{ border:10px solid #fff;}
+
+
+  </style>
+ </head>
+ <body>
+    <div id="xc">
+	  <img src="images/big1.jpg" width="300" height="187">
+	  <img src="images/big2.jpg" width="300" height="187">
+	  <img src="images/big3.jpg" width="300" height="187">
+	  <img src="images/big4.jpg" width="300" height="187">
+	  <img src="images/big5.jpg" width="300" height="187">
+	  <img src="images/big6.jpg" width="300" height="187">
+	  <img src="images/big7.jpg" width="300" height="187">
+	  <img src="images/big8.jpg" width="300" height="187">
+	  <img src="images/big9.jpg" width="300" height="187">
+	</div>
+	<div class="gray"></div>
+	<div class="big_img">
+	  <img src="images/dirl.png" class="btn_left">
+	  <img src="images/dirr.png" class="btn_right">
+	  <img src="images/big1.jpg" class="show_img">
+	</div>
+	<script src="js/jquery.js"></script>
+	<script>
+	  var _index=0;
+	  var _bigSrc="";
+	  var len=$("#xc img").size();
+	  //alert(len);
+      $("#xc img").click(function(){
+		_index=$(this).index();
+	    $(".gray").show();
+		$(".big_img").show();
+		_bigSrc=$(this).attr("src");
+		$(".big_img img.show_img").attr("src",_bigSrc);
+	  });
+	  $(".gray").click(function(){
+	    $(".big_img").hide();
+		$(".gray").hide();
+	  });
+
+
+	  $(".big_img img.btn_left").click(function(){
+	    _index--;
+		if(_index<0){
+		  _index=len-1;
+		}
+		_bigSrc=$("#xc img").eq(_index).attr("src");
+		$(".big_img img.show_img").attr("src",_bigSrc);
+	  });
+
+	  $(".big_img img.btn_right").click(function(){
+	    _index++;
+		if(_index>len-1){
+		  _index=0;
+		}
+		_bigSrc=$("#xc img").eq(_index).attr("src");
+		$(".big_img img.show_img").attr("src",_bigSrc);
+	  });
+
+	</script>
+ </body>
+</html>

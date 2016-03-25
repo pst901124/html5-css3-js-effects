@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Html5新增form属性</title>
+  <style>
+    *{ margin:0; padding:0;}
+	body{ background:url(1.jpg) no-repeat center center / cover;  perspective:1000px; overflow:hidden;}
+	#formlist{ width:640px; height:400px; background:rgba(0,0,0,.5); margin:100px auto 0; transform-style:preserve-3d; transform:rotateX(60deg) rotateZ(-50deg); transition:all 2s; position:relative;}
+	#formlist:hover{ transform:rotateX(0deg) rotateZ(0deg);}
+    #formlist:before,#formlist:after{ content:""; position:absolute; background:rgba(255,255,255,.5);}
+    #formlist:before{width:20px; height:100%; left:0; transform-origin:left; transform:rotateY(90deg);}
+    #formlist:after{width:100%; height:20px; bottom:0; transform-origin:bottom; transform:rotateX(90deg);}
+
+	#formlist dl{ height:50px; line-height:50px; margin:20px 20px;}
+	#formlist dt{ float:left; width:180px; margin-right:25px; text-align:right; color:#fff;}
+	#formlist dd{ float:left; width:320px;}
+	#formlist dd input{ width:320px; height:34px;}
+/*	#formlist dd input:not([type="submit"]){ padding-left:0;}*/
+  </style>
+ </head>
+ <body>
+    <div id="formlist">
+	  <form action="http://www.baidu.com">
+	    <dl>
+		  <dt>请输入你的昵称：</dt>
+		  <dd><input type="text" placeholder="你的昵称"/></dd>
+		</dl>
+	    <dl>
+		  <dt>请输入你的电话：</dt>
+		  <dd><input type="number" placeholder="你的电话"/></dd>
+		</dl>
+	    <dl>
+		  <dt>请输入你的邮箱：</dt>
+		  <dd><input type="Email" placeholder="你的邮箱"/></dd>
+		</dl>
+	    <dl>
+		  <dt>请输入你的个人网站：</dt>
+		  <dd><input type="url" placeholder="你的个人网站"/></dd>
+		</dl>
+	    <dl>
+		  <dt>你喜欢的颜色：</dt>
+		  <dd><input type="color" placeholder="你喜欢的颜色"/></dd>
+		</dl>
+	    <dl>
+		  <dt>提交：</dt>
+		  <dd><input type="submit" value="提交"/></dd>
+		</dl>
+	    
+	  </form>
+	</div>
+ </body>
+</html>

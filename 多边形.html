@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多边形</title>
+	<style>
+		*{ margin:0; padding:0;}
+		body{ background:#eee;}
+		.box{ width:980px; margin:100px auto;}
+		.box ul li{ list-style:none; width:180px; height:105px; background:rgba(0,0,0,.7); float:left; margin:30px 5px; color:#fff; position:relative;}
+		.box ul li:nth-child(9n-3){ margin-left:100px;}
+		.box ul li:before,.box ul li:after{
+			content:"";
+			width:180px;
+			height:105px;
+			display:block;
+			background:rgba(0,0,0,.7);
+			position:absolute;
+			left:0;
+			top:0;
+		}
+		.box ul li:before{ transform:rotate(60deg);}
+		.box ul li:after{ transform:rotate(-60deg);}
+
+
+	</style>
+</head>
+<body>
+	<div class="box">
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+</body>
+</html>

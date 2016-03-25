@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+    *{ margin:0; padding:0;}
+	li{ list-style:none;}
+	#banner{ width:970px; height:270px; margin:100px auto; position:relative; overflow:hidden;}
+    .pic{ width:970px; height:270px; position:relative;}
+	.pic ul li{ width:0; height:0; top:135px; left:485px; background-color:#000; position:absolute;}
+	.pic ul li img{ width:100%; height:100%; opacity:.5; box-shadow:2px 2px 8px #000;}
+	.pic ul li.l1{ width:640px; height:270px; top:0; left:165px; z-index:10;}
+
+	.pic ul li.l2{ width:530px; height:224px; top:23px; left:640px; z-index:9;}
+	.pic ul li.l0{ width:530px; height:224px; top:23px; left:0; z-index:9;}
+
+	.pic ul li.l3{ width:530px; height:100px; top:85px; left:640px; z-index:8;}
+	.pic ul li.l9{ width:530px; height:100px; top:85px; left:-200px; z-index:8;}
+
+	.pic ul li.l1 img{opacity:1; }
+	.btn div{ width:45px; height:45px; top:112px; z-index:99999; cursor:pointer; position:absolute;}
+	.btn .left{ left:10px;}
+	.btn .right{ right:10px;}
+  </style>
+  <script src="js/jquery.js"></script>
+  <script>
+    $(function(){
+	  var Time=new Date();
+	  $("div.btn div").click(function(){
+		if(new Date()-Time>800){
+		  Time=new Date();
+	      var dec=$(this).index();
+		  move(dec);
+		}
+	  });
+	  function move(dec){
+	    var arrW=[],arrH=[],arrT=[],arrL=[],arrZ=[],arrO=[];
+		$("div.pic ul li").each(function(i){
+		  arrW[i]=$(this).width();
+		  arrH[i]=$(this).height();
+		  arrT[i]=$(this).css("top");
+		  arrL[i]=$(this).css("left");
+		  arrZ[i]=$(this).css("z-index");
+		  arrO[i]=$(this).find("img").css("opacity");
+		});
+		$("div.pic ul li").each(function(i){
+		  if(dec==1){
+		    var index=i+1;
+			if(index>9)index=0;
+		  }else{
+		    var index=i-1;
+		    if(index<0)index=9;
+		  }
+		  $(this).find("img").animate({
+		    opacity:arrO[index]
+		  },800);
+
+		  $(this).css("zIndex",arrZ[index]).animate({
+		    width:arrW[index],
+		    height:arrH[index],
+		    top:arrT[index],
+		    left:arrL[index],
+		  },800);
+		});
+	  }
+	});
+  </script>
+ </head>
+ <body>
+  <div id="banner">
+    <div class="pic">
+	  <ul>
+	    <li class="l1"><img src="img/1.jpg" /></li>
+	    <li class="l2"><img src="img/2.jpg" /></li>
+	    <li class="l3"><img src="img/3.jpg" /></li>
+	    <li><img src="img/4.jpg" /></li>
+	    <li><img src="img/5.jpg" /></li>
+	    <li><img src="img/6.jpg" /></li>
+	    <li><img src="img/7.jpg" /></li>
+	    <li><img src="img/8.jpg" /></li>
+	    <li class="l9"><img src="img/9.jpg" /></li>
+	    <li class="l0"><img src="img/10.jpg" /></li>
+	  </ul>
+	</div>
+	<div class="btn">
+	  <div class="left"><img src="img/left.png"></div>
+	  <div class="right"><img src="img/right.png"></div>
+	</div>
+  </div>
+ </body>
+</html>

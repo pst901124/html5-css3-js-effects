@@ -1,0 +1,81 @@
+@charset "utf-8";
+*{ margin:0; padding:0;}
+body{ background:url(../img/white_texture.jpg);}
+figure{ float:left; position:relative; width:33.33%; overflow:hidden; height:323px;}
+figcaption{ position:absolute; top:0; left:0; color:#fff; font-family:"Microsoft YaHei";}
+figure img{ opacity:.8; transition:all 0.35s;}
+figure figcaption p,h2,span,div{ transition:all 0.35s;}
+@media screen and (max-width:600px){ 
+  figure{width:100%;}
+  }
+@media screen and (min-width:601px) and (max-width:1000px){ 
+  figure{width:50%;}
+  }
+@media screen and (min-width:10001px){
+  figure{width:33.33%;}
+  }
+.test1{ background:#2f0000;}
+.test1 figcaption{ padding:20px;}
+.test1 figcaption p{ background:#fff; color:#333; margin:5px; padding:3px; text-align:center; transform:translate(-140px,0px);}
+.test1 figcaption p:nth-of-type(1){ transition-delay:.05s;}
+.test1 figcaption p:nth-of-type(2){ transition-delay:.1s;}
+.test1 figcaption p:nth-of-type(3){ transition-delay:.15s;}
+.test1:hover figcaption p{ transform:translate(0px,0px);}
+.test1:hover img{ transform:translate(-50px,0px); opacity:.5;}
+
+.test2{background:#030;}
+.test2 figcaption{ width:100%; height:100%;}
+.test2 figcaption h2{ margin:15% 0 0 15%;}
+.test2 figcaption p{ margin-left:15%; transform:translate(0,50px); opacity:0;}
+.test2 figcaption div{ border:2px solid #fff; width:80%; height:80%; position:absolute; top:10%; left:10%; transform:translate(0,-340px) rotate(0deg);}
+.test2:hover figcaption div{ transform:translate(0,0) rotate(360deg);}
+.test2:hover img{ transform:translate(-50px,0px); opacity:.5;}
+.test2:hover figcaption p{ transform:translate(0,0); opacity:1;}
+
+.test3{background:orange;}
+.test3 figcaption{ top:30%; left:15%;}
+.test3 figcaption h2{ transform:skew(90deg);}
+.test3:hover figcaption h2{ transform:skew(0);}
+.test3 figcaption p{ transform:skew(90deg);}
+.test3:hover figcaption p{ transform:skew(0); transition-delay:.15s;}
+.test3:hover img{ opacity:.5}
+
+.test4{ background:blue;}
+.test4 figcaption{ width:100%; height:100%;}
+.test4 figcaption h2{margin-top:30%; margin-left:15%; transform:scale(1.2); opacity:0;}
+.test4 figcaption p{ margin-top:5px; margin-left:15%; transform:scale(1.2); opacity:0;}
+.test4 figcaption div{ border:2px solid #fff; width:80%; height:80%; position:absolute; top:10%; left:10%; transform:scale(1.2); opacity:0;}
+.test4:hover figcaption div{ transform:scale(1); opacity:1;}
+.test4:hover img{ transform:scale(1.2); opacity:.5;}
+.test4:hover figcaption h2{ transform:scale(1); opacity:1;}
+.test4:hover figcaption p{ transform:scale(1); opacity:1;}
+
+.test5{ background:green;}
+.test5 figcaption{ width:100%; height:100%;}
+.test5 figcaption h2{margin-top:30%; margin-left:15%;opacity:0;}
+.test5 figcaption p{ margin-top:5px; margin-left:15%;opacity:0;}
+.test5:hover figcaption h2{opacity:1;}
+.test5:hover figcaption p{opacity:1;}
+.test5 figcaption div{ position:absolute; top:10%; left:10%;}
+.test5 figcaption div:nth-of-type(1){ width:0; border-top:2px solid #fff;}
+.test5 figcaption div:nth-of-type(2){ height:0; border-left:2px solid #fff;}
+.test5 figcaption div:nth-of-type(3){ width:0; border-bottom:2px solid #fff;}
+.test5 figcaption div:nth-of-type(4){ height:0; border-right:2px solid #fff;}
+.test5:hover figcaption div:nth-of-type(1){ width:80%;}
+.test5:hover figcaption div:nth-of-type(2){ height:80%;}
+.test5:hover figcaption div:nth-of-type(3){ width:80%; height:80%;}
+.test5:hover figcaption div:nth-of-type(4){ width:80%; height:80%;}
+.test5:hover img{ opacity:.5;}
+
+
+
+
+
+
+
+
+
+
+
+
+

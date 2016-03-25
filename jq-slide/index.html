@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css">
+  <style>
+    *{ margin:0; padding:0;}
+	li{ list-style:none;}
+	body{ background:linear-gradient(90deg,#ff9966 10%,#4b1248 90%);}
+	#cont{ width:280px; height:auto; box-shadow:0px 10px 20px rgba(0,0,0,.3); margin:150px auto 0; background:#b7afa3;}
+	#cont h2{ text-align:center; color:#fff; font-weight:300; line-height:50px; border-bottom:1px solid rgba(0,0,0,.2);}
+	#cont ul li{ color:#374046; line-height:50px; border-bottom:1px solid rgba(0,0,0,.2); cursor:pointer;}
+	#cont ul li.click{ background:#ff9966;}
+	#cont ul li i{ margin:0 10px;}
+	#cont ul li .img{ border-top:1px dotted #b77f24; width:280px; height:246px; display:none;}
+  </style>
+ </head>
+ <body>
+  <div id="cont">
+  <h2>个人介绍</h2>
+    <ul>
+	  <li>
+	    <i class="fa fa-heart"></i>fhasogdh
+		<div class="img">
+		  <img src="img/1.png">
+		</div>
+	  </li>
+	  <li>
+	    <i class="fa fa-share-square-o"></i>fhasogdh
+		<div class="img">
+		  <img src="img/1.png">
+		</div>
+	  </li>
+	  <li>
+	    <i class="fa fa-comments"></i>fhasogdh
+		<div class="img">
+		  <img src="img/1.png">
+		</div>
+	  </li>
+	  <li>
+	    <i class="fa fa-comments"></i>fhasogdh
+		<div class="img">
+		  <img src="img/1.png">
+		</div>
+	  </li>
+	</ul>
+  </div>
+  <script src="js/jquery-2.1.4.js"></script>
+  <script>
+    $(function(){
+	  $("#cont ul li").click(function(){
+		$(this).addClass("click").siblings().removeClass("click");
+	    $(this).find(".img").slideToggle("slow");
+		$(this).siblings().find(".img").slideUp("slow");
+	  })
+	})
+  </script>
+ </body>
+</html>

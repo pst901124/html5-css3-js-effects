@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+    *{ margin:0; padding:0;}
+	body{ background:#232323 url() no-repeat; background-size:cover; font-family:"微软雅黑";}
+	header h1{ font-size:30px; font-weight:300; text-align:center;}
+	header h1 span{ font-size:24px; color:#999; display:block;}
+	.cont{ width:415px; height:300px; margin:50px auto; position:relative;}
+	.cont input{ display:none;}
+	.cont .label{ width:40px; height:40px; border-radius:50%; display:block; position:absolute; top:45%; left:-20px; background:#fff; color:#000; font-size:16px; line-height:40px; text-align:center; cursor:pointer;}
+	.cont .html5{ width:auto; height:auto; padding:5px; line-height:25px; border:1px solid #333; position:absolute; top:45%; left:120px; background:rgba(255,255,255,0.5);}
+	.cont .img{ width:120px; height:120px; border-radius:50%; border:3px solid #fff; background:#000 url() center center / cover; position:absolute; top:30%; left:350px;}
+	.cont .txt_about{ width:415px; height:300px; background:rgba(255,2555,255,0.5); display:none;}
+
+	.check:checked ~ .txt_about{ display:block;}
+	.check:checked ~ .html5{ display:none;}
+	.check:checked > .sp {display:block; transform:rotate(15deg); color:red;}
+	.check:checked ~ .img{ width:180px; height:180px; border-radius:50%; top:20%;}
+  </style>
+ </head>
+ <body>
+    <header>
+	  <h1>
+	    个人信息介绍动画效果UI界面设计
+		<span>A Animation UI Design</span>
+	  </h1>
+	  <div class="cont">
+	    <input type="checkbox" id="check" name="check" class="check">
+		<label for="check" class="label"><span class="sp">+</span></label>
+		<div class="txt_about">
+		  <p>姓名：name</p>
+		  <p>姓名：name</p>
+		  <p>姓名：name</p>
+		  <p>姓名：name</p>
+		</div>
+		<div class="html5">欢迎来到HTML5的课堂</div>
+		<div class="img"></div>
+	  </div>
+	</header>
+ </body>
+</html>

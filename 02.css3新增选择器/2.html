@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+    .first-div{border:1px solid red;}
+	.second-div{ border:1px solid blue;}
+	.third-div{ border:1px solid green;}
+	div{margin:5px 0;}
+
+  </style>
+  <style>
+  </style>
+  <script>
+    window.onload=function(){
+	  var selects=document.getElementById("select");
+	  var spans=document.getElementsByTagName("span")[0];
+	  selects.onkeyup=function(){
+	    if(selects.value==""){
+		  return;
+		}else{
+			for(var i=0; i<document.styleSheets[1].cssRules.length; i++){
+			  document.styleSheets[1].deleteRule(i);
+			}
+			var rule=selects.value+spans.innerHTML;
+			document.styleSheets[1].insertRule(rule,0);
+		}
+	  }
+	}
+  </script>
+ </head>
+ <body>
+ <input type="text" id="select">
+  <span>
+    {border:1px solid #000;}
+  </span>
+
+  <div class="first-div">
+  <span></span>
+    <div class="first-one">
+	  first-one
+      <div class="first-one-one">first-one-noe----</div>
+      <div class="first-one-two">first-one-two----</div>
+	</div>
+    <div class="first-two">first-two</div>
+    <div class="first-three">first-three</div>
+	<span></span>
+  </div>
+  <div class="second-div">
+    <div class="second-one">second-one</div>
+    <div class="second-two">second-two</div>
+    <div class="second-three">second-three</div>
+  </div>
+  <div class="third-div">
+    <div class="third-one">third-one</div>
+  </div>
+  <div></div>
+ </body>
+</html>

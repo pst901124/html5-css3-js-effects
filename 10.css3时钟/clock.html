@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script src="css3.js"></script>
+  <style>
+  .one{
+    width:240px; height:240px; border:1px solid #ccc; border-radius:50%;box-shadow:2px 2px 4px #111;
+	background:-webkit-gradient(radial,120 120,0,120 120,120,from(#ffe),to(#eee));
+	background:-moz-radial-gradient(circle,close-side,#ffe 0%,#eee 100%);
+	position:relative;
+
+  }
+  span{
+/*    width:10px;height:10px;background:#111;border-radius:50%;position:absolute;top:121px;left:121px*/
+  }
+  </style>
+
+  <script>
+    window.onload=function(){
+	  var div=document.getElementsByTagName("div")[0];
+	  drawMark(div)
+	  var time=new Date();
+	  var ha=time.getHours();
+	  var ma=time.getMinutes();
+	  var sa=time.getSeconds();
+	  var hours=drawPoint(div,120,120,60,5,"#111",(ha*30+ma*6/12)-90);
+	  var mins=drawPoint(div,120,120,80,4,"#555",ma*6-90);
+	  var seds=drawPoint(div,120,120,100,3,"#999",sa*6-90);
+	  setInterval(function(){
+	    var time=new Date();
+	    var ha=time.getHours();
+	    var ma=time.getMinutes();
+	    var sa=time.getSeconds();
+		setCss3(hours,{transform:"rotate("+((ha*30+ma*6/12)-90)+"deg)"});
+		setCss3(mins,{transform:"rotate("+(ma*6-90)+"deg)"});
+		setCss3(seds,{transform:"rotate("+(sa*6-90)+"deg)"});
+	  },1000);
+	  round(div);
+	}
+    
+
+	function drawMark(obj){
+	  for(var i=0; i<60; i++){
+		 var widths=3;
+		 var heights=8;
+		 if(i%5==0){
+		   widths=4;
+		   heights=10;
+		 }
+	    var div=document.createElement("div");
+		div.style.cssText="width:"+widths+"px;height:"+heights+"px;background:#111;position:absolute;top:0;left:120px";
+		setCss3(div,{transform:"rotate("+i*6+"deg)","transform-origin":"0 120px"});
+		obj.appendChild(div);
+	  }
+	}
+	
+	function drawPoint(obj,startx,starty,width,height,color,angle){
+	  var div=document.createElement("div");
+	  div.style.cssText="width:"+width+"px;height:"+height+"px;position:absolute;top:"+starty+"px;left:"+startx+"px;background:"+color+";box-shadow:1px 1px 4px #ccc";
+	  setCss3(div,{transform:"rotate("+angle+"deg)","transform-origin":"0 0"});
+	  obj.appendChild(div);
+	  return div;
+	}
+    function round(obj){
+	  var div=document.createElement("div");
+	  div.style.cssText="width:10px;height:10px;background:#111;border-radius:50%;position:absolute;top:115px;left:115px;box-shadow:1px 1px 4px #ccc";
+	  obj.appendChild(div);
+	}
+  </script>
+ </head>
+ <body>
+  <div class="one"><span></span></div>
+ </body>
+</html>

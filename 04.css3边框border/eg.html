@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+    #one{
+	  width:200px; height:200px; border:1px solid red;
+	  border-radius:0px;
+	  box-shadow:2px 2px 8px #ccc;
+	}
+  </style>
+  <script>
+    window.onload=function(){
+	   var one=document.getElementById("one");
+	   /*
+	   var radius=10;
+	   var t;
+	   one.onmouseover=function(){
+		 clearInterval(t);
+	     t=setInterval(function(){
+		   if(parseInt(one.style.borderRadius)>=one.offsetWidth/2){
+			   clearInterval(t);
+//			   alert(55);
+		   }else{
+			   radius++;
+			   one.style.borderRadius=radius+"px";
+		   }
+		 },60);
+	   }
+
+	   one.onmouseout=function(){
+		 clearInterval(t);
+	     t=setInterval(function(){
+		   if(parseInt(one.style.borderRadius)<=0){
+			   clearInterval(t);
+//			   alert(55);
+		   }else{
+			   radius--;
+			   one.style.borderRadius=radius+"px";
+		   }
+		 },60);
+	   }
+	   */
+	   var t;
+	   one.onmouseover=function(){
+		 clearInterval(t);
+	     t=setInterval(function(){
+		   if(parseInt(one.style.borderRadius)>=one.offsetWidth/2){
+			   clearInterval(t);
+//			   alert(55);
+		   }else{
+			   var radius=(one.offsetWidth/2-parseInt(one.style.borderRadius))*0.2;
+			   one.style.borderRadius=parseInt(one.style.borderRadius)+radius+"px";
+		   }
+		 },60);
+	   }
+
+	   one.onmouseout=function(){
+		 clearInterval(t);
+	     t=setInterval(function(){
+		   if(parseInt(one.style.borderRadius)<=0){
+			   clearInterval(t);
+//			   alert(55);
+		   }else{
+			   var radius=(0-parseInt(one.style.borderRadius))*0.2;
+			   one.style.borderRadius=parseInt(one.style.borderRadius)+radius+"px";
+		   }
+		 },60);
+	   }
+	   }
+  </script>
+ </head>
+ <body>
+  <div id="one" style="border-radius:0;"></div>
+ </body>
+</html>

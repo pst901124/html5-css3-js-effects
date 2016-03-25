@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+/*除了from,to之外还可以用百分百*/
+    @keyframes first {
+	  from{
+	    width:200px;
+	  }
+	  to{
+	    width:400px;
+	  }
+	}
+    @-webkit-keyframes first {
+	  from{
+	    width:200px;
+	  }
+	  to{
+	    width:400px;
+	  }
+	}
+    @-moz-keyframes first {
+	  from{
+	    width:200px;
+	  }
+	  to{
+	    width:400px;
+	  }
+	}
+    @-ms-keyframes first {
+	  from{
+	    width:200px;
+	  }
+	  to{
+	    width:400px;
+	  }
+	}
+    @-o-keyframes first {
+	  from{
+	    width:200px;
+	  }
+	  to{
+	    width:400px;
+	  }
+	}
+	/*
+	@keyframes first {
+	  0%{
+	    width:200px;
+	  }
+	  20%{
+	    width:240px;
+	  }
+	  40%{
+	    width:300px;
+	  }
+	  60%{
+	    width:360px;
+	  }
+	  100%{
+	    width:400px;
+	  }
+	}
+*/
+/*动画名称first; 动画运动时间2s; 动画运动类型cubic-bezier; 动画开始前停止时间0s; 动画播放次数infinite(循环播放); 动画从结束倒着播放alternate*/
+    .one{
+	  width:200px; height:200px; border:1px solid #f00;
+	  animation:first 2s cubic-bezier(.99,-0.41,0,1.46) 0s infinite alternate;
+	  -webkit-animation:first 2s cubic-bezier(.99,-0.41,0,1.46) 0s infinite alternate;
+	  -moz-animation:first 2s cubic-bezier(.99,-0.41,0,1.46) 0s infinite alternate;
+	  -ms-animation:first 2s cubic-bezier(.99,-0.41,0,1.46) 0s infinite alternate;
+	  -o-animation:first 2s cubic-bezier(.99,-0.41,0,1.46) 0s infinite alternate;
+/*animation-play-state规定动画是否运行  paused:暂停 running:运行*/
+	  animation-play-state:paused;
+	  -webkit-animation-play-state:paused;
+	  -moz-animation-play-state:paused;
+	  -ms-animation-play-state:paused;
+	  -o-animation-play-state:paused;
+	}
+  </style>
+  <script type="text/javascript" src="css3.js"></script>
+  <script>
+    window.onload=function(){
+	  var one=document.getElementsByTagName("div")[0];
+	  var btn1=document.getElementsByTagName("input")[0];
+	  var btn2=document.getElementsByTagName("input")[0];
+	  btn1.onclick=function(){
+	    setCss3(one,{animationPlayState:"running"});
+	  }
+//	  btn2.onclick=function(){
+//	    one.style.animationPlayState="paused";
+//	  }
+	}
+  </script>
+ </head>
+ <body>
+  <div class="one"></div>
+  <input type="button" value="播放"/>
+  <input type="button" value="暂停"/>
+ </body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+    *{ margin:0; padding:0;}
+	body{ background:#aab7eb; font-family:"微软雅黑";}
+	.cont{ width:650px; margin:150px auto 0; position:relative;}
+	.cont ul li{ list-style:none; float:left;}
+	.cont label{ padding:10px 20px; background:rgba(255,255,255,0.2); color:#693b8d; font-size:24px; position:relative; top:3px; cursor:pointer;}
+/*	属性选择器*/
+    input[type=radio]{ position:absolute; top:-9999px; left:-9999px;}
+	.tab-cont{ width:100%; font-size:16px; line-height:25px; color:#fff; background:#693b8d; padding:15px; box-sizing:border-box; position:absolute; top:44px; left:0; display:none;}
+/* 鼠标点击事件*/
+    [id^=tab]:checked + label{background:#693b8d; color:#fff;}
+	[id^=tab]:checked ~ [id^=tab-cont]{ display:block;}
+  </style>
+ </head>
+ <body>
+  <div class="cont">
+    <ul>
+	  <li>
+	  <input type="radio" name="tab" id="tab_1" checked/>
+	  <label for="tab_1">Div+css</label>
+	  <div class="tab-cont" id="tab-cont">吕经理表示，这批奶粉是在荷兰生产的，如果能够搞清楚虫子的国籍，那么这个事情就好说，可是如何才能检验出一只已经被压扁的虫子的国籍，吕经理并没有提供出什么好办法。接着，他又谈到了欧洲奶粉的生产工艺：都是无菌车间，虫子不可能飞进去。</div>
+	  </li>
+	  <li>
+	  <input type="radio" name="tab" id="tab_2"/>
+	  <label  for="tab_2">Html5+css</label>
+	  <div class="tab-cont" id="tab-cont">奶粉里面竟然有虫子，这也太恶心了，虫子究竟是怎样跑进去的呢？据悉，俞女士的女儿今年2岁，从今年年初开始，俞女士就一直给孩子喝一种叫牛栏牌的奶粉，据说是荷兰进口的。</div>
+	  </li>
+	  <li>
+	  <input type="radio" name="tab" id="tab_3"/>
+	  <label for="tab_3">Js+Jq</label>
+	  <div class="tab-cont" id="tab-cont">好妈咪这边表示，这只虫子是在开封之后三四天才发现的，这期间奶粉罐曾多次被打开，有只虫子进去也很正常。随后，记者联系了上一级的经销商。好妈咪这边表示，这只虫子是在开封之后三四天才发现的，这期间奶粉罐曾多次被打开，有只虫子进去也很正常。随后，记者联系了上一级的经销商。</div>
+	  </li>
+	</ul>
+  </div>
+ </body>
+</html>

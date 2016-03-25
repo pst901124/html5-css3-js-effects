@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>css3 js相册展示3D</title>
+  <style>
+    *{ margin:0; padding:0;}
+	body{ background:#000; overflow-x:hidden;}
+	#banner{width:100%; height:500px;  margin:150px 0; -webkit-transform-style:preserve-3d; -webkit-perspective:800px; position:relative;}
+	#banner .pic img{ width:300px; -webkit-box-reflect: below 0 -webkit-linear-gradient(top,rgba(0,0,0,0.001),rgba(0,0,0,0.06)); position:absolute; top:0; transition:all 0.6s;}
+	.pic .now{ transform:translateZ(100px);}
+	.pic .before{ transform:rotateY(45deg) translateZ(-100px);}
+	.pic .black{ transform:rotateY(-45deg) translateZ(-100px);}
+  </style>
+ </head>
+ <body>
+  <div id="banner">
+    <div class="pic">
+	  <img src="img/1.jpg">
+	  <img src="img/2.jpg">
+	  <img src="img/3.jpg">
+	  <img src="img/4.jpg">
+	  <img src="img/5.jpg">
+	  <img src="img/6.jpg">
+	  <img src="img/7.jpg">
+	  <img src="img/8.jpg">
+	  <img src="img/9.jpg">
+	  <img src="img/10.jpg">
+	  <img src="img/11.jpg">
+	</div>
+  </div>
+  <script src="js/jquery.js"></script>
+  <script>
+	var imgLen=$("img").length;
+	var lastInd=Math.floor(imgLen/2)
+	var imgLeft=[];
+    for(i=0;i<imgLen;i++){
+		if(i<lastInd){
+		  $("img").eq(i).addClass("before");
+		}else if(i>lastInd){
+		  $("img").eq(i).addClass("black");
+		}else{
+		  $("img").eq(i).addClass("now");
+		}
+	  
+	}
+
+
+    function mid(){
+	  var Wind=$(window).width();
+	  var mInd=$(".now").index();
+	  $(".now").css("left",Wind/2-150+"px");
+
+	  for(var i=0; i<imgLen; i++){
+	    /*$("img").eq(i).css({left:Wind/2-150-100*(imgLen-i)+"px"});*/
+		$("img").eq(i).css("left",Wind/2-150-100*(mInd-i)+"px");
+		imgLeft[i]=parseInt($("img").eq(i).css("left"));
+	  }
+	};
+	mid();
+
+	$(window).resize(function(){mid();});
+
+	$("img").click(function(){
+	  var nowInd=$(this).index();
+	  for(var i=0; i<imgLen; i++){
+	    imgLeft[i] -= 100*(nowInd-lastInd);
+		$("img").eq(i).css("left",imgLeft[i]);
+	  }
+
+	  for(var i=0; i<imgLen; i++){
+	    if(i<nowInd){
+		  $("img").eq(i).removeClass().addClass("before");
+		}else if(i>nowInd){
+		  $("img").eq(i).removeClass().addClass("black");
+		};
+	  };
+	  lastInd=nowInd;
+	  $(this).removeClass().addClass("now").siblings().removeClass("now");
+	});
+  </script>
+ </body>
+</html>

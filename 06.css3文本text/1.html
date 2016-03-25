@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+     div{ 
+	 width:50px; 
+	 border:1px solid red; 
+	 overflow:hidden;
+	 white-space:nowrap;
+/*	 clip:直接裁切；ellipsis:省略号代替；string:给定的字符串代替被修剪的文本 "string" */
+	 text-overflow:ellipsis;
+	 }
+	 [title="content"]:hover{
+	   overflow:visible;
+	   top:15px;
+	 }
+  </style>
+ </head>
+ <body>
+  <div title="content">用于测试的文本内容用于测试的文本内容</div>
+ </body>
+</html>

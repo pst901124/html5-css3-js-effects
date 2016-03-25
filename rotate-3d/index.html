@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+    *{ margin:0; padding:0;}
+	li{ list-style:none;}
+	body{ background:#000; overflow:hidden;}
+	.scene{ 
+		width:500px; height:500px; margin:10px auto; position:relative;
+		perspective:1200px;
+		-webkit-perspective:1200px;
+		-moz-perspective:1200px;
+		-ms-perspective:1200px;
+		-o-perspective:1600px;
+	}
+
+	.out{ 
+		width:100%; height:100%; position:relative;
+		transform:translateZ(-300px);
+		-webkit-transform:translateZ(-300px); 
+		-moz-transform:translateZ(-300px); 
+		-ms-transform:translateZ(-300px); 
+		-o-transform:translateZ(-300px);
+	}
+
+	.ball{ 
+		width:100%; height:100%; position:relative;
+		transform-style:preserve-3d;
+		-webkit-transform-style:preserve-3d;
+		-moz-transform-style:preserve-3d;
+		-ms-transform-style:preserve-3d;
+		-o-transform-style:preserve-3d;
+	}
+	.ball li{ 
+		position:absolute; width:80px; height:50px; padding:3px; 
+		background:rgba(32,163,115,1); 
+		border-radius:10%; box-shadow:0 0 10px #41cd9a; 
+		border:1px solid #238a64; 
+		background-clip:content-box;
+		text-align:center; line-height:50px; color:#fff; text-shadow:0 0 4px #000; font-family:"微软雅黑"; font-size:16px; 
+		transform-origin:left; 
+		-webkit-transform-origin:left;
+		-moz-transform-origin:left; 
+		-o-transform-origin:left; 
+		-ms-transform-origin:left;
+	}
+  </style>
+  <script src="css3.js"></script>
+  <script src="drawBall.js"></script>
+  <script src="tool.js"></script>
+  <script>
+    window.onload=function(){
+	  var ball=document.getElementsByTagName("ul")[0];
+	  var out=document.getElementsByTagName("div")[1];
+	  var scene=document.getElementsByTagName("div")[0];
+
+	  //绘制球
+	  var balls=new drawBall();
+	  balls.draw();
+	  for(var i=0; i<balls.length; i++){
+	    ball.appendChild(balls.all[i]);
+	  }
+
+	  //旋转球
+	  var maths=new math();
+	  var step=2;
+	  maths.mouse=[1,0,0];
+	  function moves() {
+		  if(step>2){
+		    step*=0.9;
+		  }else{
+		    step=2;
+		  }
+	    maths.theta+=step;
+	    maths.rotates();
+		var arr=maths.arr;
+		setCss3(ball,{transform:"matrix3d("+arr[0]+","+arr[1]+","+arr[2]+","+arr[3]+","+arr[4]+","+arr[5]+","+arr[6]+","+arr[7]+","+arr[8]+","+arr[9]+","+arr[10]+","+arr[11]+","+arr[12]+","+arr[13]+","+arr[14]+","+arr[15]+")"});	  
+	  }
+	  var t=setInterval(moves,60);
+	  //控制球-放大缩小
+	  var startz=-300;
+	  var steps=10;
+	  mouseScroll (scene,function(){
+		startz+=steps;
+	    setCss3(out,{transform:"translateZ("+startz+"px)"});
+	  },function(){
+	    startz-=steps;
+	    setCss3(out,{transform:"translateZ("+startz+"px)"});
+	  });
+	  //通过鼠标控制球的旋转方向和速度
+	  scene.onmousedown=function(e){
+		  var ev=e||window.event; 
+		  var lx=ev.clientX-scene.offsetLeft-250;
+		  var ly=ev.clientY-scene.offsetTop-250;
+		  var end;
+	    clearInterval(t);
+		document.onmousemove=function(e){
+		  var ev=e||window.event; 
+		  var cx=ev.clientX-scene.offsetLeft-250;
+		  var cy=ev.clientY-scene.offsetTop-250;
+		  end=Math.sqrt((cx-lx)*(cx-lx)+(cy-ly)*(cy-ly));
+		  step=end/5;
+	      maths.mouse=[cx,cy,0];
+		  maths.theta+=step;
+	      maths.rotates();
+		  var arr=maths.arr;
+		setCss3(ball,{transform:"matrix3d("+arr[0]+","+arr[1]+","+arr[2]+","+arr[3]+","+arr[4]+","+arr[5]+","+arr[6]+","+arr[7]+","+arr[8]+","+arr[9]+","+arr[10]+","+arr[11]+","+arr[12]+","+arr[13]+","+arr[14]+","+arr[15]+")"});
+		  lx=cx;
+		  ly=cy;
+		}
+		document.onmouseup=function(e){
+			var ev=e||window.event; 
+		  var ox=ev.clientX-scene.offsetLeft-250;
+		  var oy=ev.clientY-scene.offsetTop-250;
+		  document.onmousemove=null;
+		  document.onmouseup=null;
+		  maths.mouse=[ox,oy,0];
+		  step=end;
+	      maths.rotates();
+		  var arr=maths.arr;
+		  t=setInterval(moves,60);
+		}
+	  }
+	}
+  </script>
+ </head>
+ <body>
+    <div class="scene">
+	  <div class="out">
+	    <ul class="ball">
+		</ul>
+	  </div>
+	</div>
+ </body>
+</html>

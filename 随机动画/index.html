@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>随机动画</title>
+  <style>
+    *{ margin:0; padding:0;}
+	body{ background:url(img/bj.jpg) center top no-repeat; background-size:cover;}
+	#list{width:1000px; height:460px; margin:100px auto 0;}
+	#list .con{ width:300px; height:200px; float:left; margin:20px 0 0 20px; position:relative;}
+	#list .con:nth-of-type(1){background:hotpink;}
+	#list .con:nth-of-type(2){background:orange;}
+	#list .con:nth-of-type(3){background:green;}
+	#list .con:nth-of-type(4){background:blue;}
+	#list .con:nth-of-type(5){background:#000;}
+	#list .con:nth-of-type(6){background:yellow;}
+	#list .con p{ line-height:200px; text-align:center; font-size:40px; color:#fff; font-weight:bolder;}
+	#list .con img{ position:absolute; top:0; left:0; opacity:0; transition:all 1s;}
+	#list .con:hover img{ opacity:1;}
+	#list .con:hover p{ transform:scale(0.5);}
+	#list .rot{ animation: rot 0.8s .2s;}
+	#list .top_s{ animation: top_s 0.8s .2s;}
+	#list .sca{ animation: sca 0.8s .2s;}
+	@keyframes rot{
+	  0%,20%,40%,60%,80%,100{ transform-origin:top center;}
+	  0%{transform:rotate(0deg);}
+	  20%{transform:rotate(-20deg);}
+	  40%{transform:rotate(15deg);}
+	  60%{transform:rotate(-10deg);}
+	  80%{transform:rotate(5deg);}
+	  100%{transform:rotate(0deg);}
+	}
+	@keyframes top_s{
+	  0%{top:0;}
+	  20%{top:20px;}
+	  40%{top:-15px;}
+	  60%{top:10px;}
+	  80%{top:-5px;}
+	  100%{top:0;}
+	}
+	@keyframes sca{
+	  0%{transform:scale(1);}
+	  20%{transform:scale(1.2);}
+	  40%{transform:scale(0.8);}
+	  60%{transform:scale(1.1);}
+	  80%{transform:scale(0.9);}
+	  100%{transform:scale(1);}
+	}
+  </style>
+ </head>
+ <body>
+  <div id="list">
+    <div class="con">
+	  <p>WEB</p>
+	  <img src="img/web.png">
+	</div>
+    <div class="con">
+	  <p>JAVA</p>
+	  <img src="img/java.png">
+	</div>
+    <div class="con">
+	  <p>IOS</p>
+	  <img src="img/ios.png">
+	</div>
+    <div class="con">
+	  <p>SEO</p>
+	  <img src="img/seo.png">
+	</div>
+    <div class="con">
+	  <p>WEB</p>
+	  <img src="img/DIY.png">
+	</div>
+    <div class="con">
+	  <p>WEB</p>
+	  <img src="img/zzy.jpg">
+	</div>
+  </div>
+  <script src="js/jquery.js"></script>
+  <script>
+	  var anim=["rot","top_s","sca"];
+	  var ys,i;
+	  $("#list .con").hover(function(){
+		i=Math.floor(Math.random()*3);
+	    ys=anim[i];
+		$(this).addClass(ys);
+	  },function(){
+	    $(this).removeClass(ys);
+	  });
+  </script>
+ </body>
+</html>

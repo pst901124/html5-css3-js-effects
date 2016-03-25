@@ -1,0 +1,66 @@
+﻿<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>CSS3无缝滚动</title>
+  <style type=text/css>
+  *{margin:0px;padding:0px;}
+  body{background:#1fc799;}
+  #list{width:960px;height:270px;margin:120px auto;
+  border-radius:20px;box-shadow:2px 2px 15px #000033;overflow:hidden;position:relative;}
+  #list ul{width:3840px;position:absolute;animation:mylist 15s linear infinite; cursor:pointer;}
+  #list ul li{list-style:none; height:270px; width:230px; background:orange; float:left; margin:0 5px;}
+  @keyframes mylist{
+  from{left:0px;}
+  to{left:-1920px;}
+  }
+#list ul:hover{animation-play-state:paused;}
+#list ul li:hover img{ border:5px solid #cc9ff;transform:scale(0.9)}
+
+
+  </style>
+ </head>
+ <body>
+	  <div id="list">
+	  <ul>
+	  <!-- 第一轮播放 -->
+	  <li><img src="img/1.jpg"/></li>
+	  <li><img src="img/2.jpg"/></li>
+	  <li><img src="img/3.jpg"/></li>
+	  <li><img src="img/4.jpg"/></li>
+	  <li><img src="img/5.jpg"/></li>
+	  <li><img src="img/6.jpg"/></li>
+	  <li><img src="img/7.jpg"/></li>
+	  <li><img src="img/8.jpg"/></li>
+	  <!-- 第二轮播放 -->
+	  <li><img src="img/1.jpg"/></li>
+	  <li><img src="img/2.jpg"/></li>
+	  <li><img src="img/3.jpg"/></li>
+	  <li><img src="img/4.jpg"/></li>
+	  <li><img src="img/5.jpg"/></li>
+	  <li><img src="img/6.jpg"/></li>
+	  <li><img src="img/7.jpg"/></li>
+	  <li><img src="img/8.jpg"/></li>
+</ul>
+	  </div>
+	  <!--总结
+		1.body可视范围，添加样式css，背景颜色
+		2.在body 创建一个宽度为960像素的宽和270像素的高盒子。
+		3.解决浏览器遇到的兼容问题
+		4. 利用外边距的属性 设置盒子水平居中
+		5.设置css3样式，圆角和阴影（水平位置 垂直位置 扩散半径 颜色）
+		6.添加无序列表ul li 。设置子项的样式  添加宽度并排展示
+		7. 在网页中插入图片
+		8.强制隐藏溢出的元素
+		9.利用定位改变ul 位置-》 规定动画规则  from{left:0px;}/* 从 开始*/
+		to{left:-1920px;}/* 去 结束*/
+		10. 调用规则：规则名称 运行一周时间 速度 播放次数  该轮流反向播放
+		11. 鼠标经过效果  边框  变小
+          -->
+
+ </body>
+</html>

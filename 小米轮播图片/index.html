@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+    *{
+	  margin:0; padding:0;
+	}
+	li{
+	  list-style:none;
+	}
+	#wrap{
+	  width:1226px; height:460px; background:#0ff; margin:50px auto; position:relative; overflow:hidden;
+	}
+	#wrap ul{
+	  position:relative;
+	}
+	#wrap ul li{
+	  position:absolute; left:0; top:0; display:none;
+	}
+	.btnL,.btnR{
+	  width:41px; height:69px; position:absolute; top:50%; margin-top:-35px; background:url("arrow.png") no-repeat;
+	}
+	.btnL{
+	  left:0; background-position:-85px 0;
+	}
+	.btnR{
+	  right:0; background-position:right 0;
+	}
+	.btnL:hover{
+	  background-position:0 0;
+	}
+	.btnR:hover{
+	  background-position:-42px 0;
+	}
+	ol{
+	  position:absolute; right:20px; bottom:20px;
+	}
+	ol li{
+	  width:6px; height:6px; float:left; border:2px solid rgba(255,255,255,0.5); background:rgba(0,0,0,0.6); margin-left:15px; border-radius:5px; cursor:pointer; transition:all 0.3s ease;
+	}
+	ol li.active{
+	  border:2px solid rgba(0,0,0,0.5); background:rgba(255,255,255,0.4);
+	}
+
+  </style>
+</head>
+ <body>
+   <div id="wrap">
+     <ul>
+	   <li style="display:block;"><a href="#"><img src="bn1.jpg"></a></li>
+	   <li><a href="#"><img src="bn2.jpg"></a></li>
+	   <li><a href="#"><img src="bn3.jpg"></a></li>
+	   <li><a href="#"><img src="bn4.jpg"></a></li>
+	   <li><a href="#"><img src="bn5.jpg"></a></li>
+	 </ul>
+	 <a class="btnL" href="javascript:;"></a>
+	 <a class="btnR" href="javascript:;"></a>
+	 <ol>
+	   <li class="active"></li>
+	   <li></li>
+	   <li></li>
+	   <li></li>
+	   <li></li>
+	 </ol>
+   </div>
+   <script src="jquery-2.1.4.js"></script>
+  <script>
+    var _index=0;
+	$(".btnR").on({
+	  "click":function(){
+	    _index++;
+		if(_index==$("#wrap ul li").size()){
+		  _index=0;
+		}
+		fnDo();
+	  }
+	})
+	$(".btnL").on({
+	  "click":function(){
+	    _index--;
+		if(_index<0){
+		  _index=$("#wrap ul li").size()-1;
+		}
+		fnDo();
+	  }
+	})
+
+	function fnDo(){
+		$("#wrap ul li").css("left","0px").eq(_index).fadeIn().siblings().fadeOut();
+		$("ol").find("li").eq(_index).addClass("active").siblings().removeClass("active");
+	}
+	$("ol").find("li").on("click",function(){
+	  if(_index!=$(this).index()){
+	    var oneWidth=$("#wrap ul li").width();
+		if(_index<$(this).index()){
+		  $("#wrap ul li").eq(_index).animate({"left":-oneWidth+"px"},function(){$(this).hide();}).end().eq($(this).index()).show().css("left",oneWidth+"px").animate({"left":0+"px"})
+		}else{
+		  $("#wrap ul li").eq(_index).animate({"left":oneWidth+"px"},function(){$(this).hide();}).end().eq($(this).index()).show().css("left",-oneWidth+"px").animate({"left":0+"px"})
+		}
+		_index=$(this).index();
+		$("ol").find("li").eq(_index).addClass("active").siblings().removeClass("active");
+	  }
+	})
+	</script>
+ </body>
+</html>

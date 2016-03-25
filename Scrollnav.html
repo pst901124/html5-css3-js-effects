@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width,target-densitydpi=device-dpi,user-scalable=no">
+  <title>Document</title>
+  <style>
+    body,ul{margin:0; padding:0; font:12px/20px Arial,"Microsoft YaHei";}
+	li{ list-style:none;}
+	a{text-decoration:none;}
+	nav{ padding:0 10px;}
+	nav div.nav-box{ position:relative; width:100%; height:49px; overflow:hidden;}
+	nav div.nav-list{ width:100%; height:46px; border-bottom:3px solid #e6e6e6; overflow:hidden; margin:0 auto;}
+	nav ul{ height:42px; padding-top:7px; width:1464px; position:absolute; top:0; left:0;}
+	nav li{ float:left; margin-right:32px; position:relative; top:3px; height:39px;}
+	nav li a{ display:inline-block; padding:8px 0; font-size:18px; color:#e6e6e6;}
+	nav li.current a{ border-bottom:3px solid #06a7e1; color:#3399e0;}
+  </style>
+  <script>
+    window.onload=function(){
+	  var oUl=document.getElementsByTagName("nav")[0].getElementsByTagName("ul")[0];
+	  var oList=document.getElementById("list");
+	  var downX=0;
+	  var downLeft=0;
+	  var onOff=true;
+	  var iSpeedX=0;
+	  var prevX=0;
+	  var oTimer=null;
+	  oUl.addEventListener("touchstart",fnStart,false);
+	  function fnStart(ev){
+	    this.style.transition=0;
+		var touches=ev.changedTouches[0];
+		downX=touches.pageX;
+		downLeft=this.offsetLeft;
+		pervX=touches.pageX;
+	  }
+	  oUl.addEventListener("touchmove",fnMove,false);
+	  function fnMove(ev){
+	    var touches=ev.changedTouches[0];
+		iSpeedX=touches.pageX-pervX;
+		pervX=touches.pageX;
+		if(this.offsetLeft>=0){
+		  if(onOff){
+		    downX=touches.pageX;
+		    onOff=false;
+		  };
+		  this.style.left=(touches.pageX-downX)/3+downLeft+"px";
+	  }
+	  else if(this.offsetLeft<=oList.offsetWidth-this.offsetWidth){
+	    if(onOff){
+		  downX=touches.pageX;
+		  onOff=false;
+		};
+		this.style.left=(touches.pageX-downX)/3+(oList.offsetWidth-this.offsetWidth)+"px";
+	  }
+	  else{
+	    this.style.left=touches.pageX-downX+downLeft+"px";
+	  }
+	}
+	oUl.addEventListener("touchend",fnEnd,false);
+	function fnEnd(ev){
+	  this.ontouchmove=null;
+	  this.ontouchend=null;
+	  var This=this;
+	  clearInterval(oTimer);
+	  oTimer=setInterval(function(){
+		if(Math.abs(iSpeedX)<1||this.offsetLeft>50||This.offsetLeft<oList.offsetWidth-This.offsetWidth-50){
+		  clearInterval(oTimer);
+	      if(This.offsetLeft>=0){
+	        This.style.transition="left 0.2s ease-out 0";
+		    oUl.style.left=0;
+		  }
+		  else if(This.offsetLeft<=oList.offsetWidth-This.offsetWidth){
+		    This.style.left-oList.offsetWidth-This.offsetWidth+"px";
+		  }
+		}else{
+		  iSpeedX=0.9*iSpeedX;
+		  This.style.left=This.offsetLeft+iSpeedX+"px";
+		}
+	  },13);
+	}
+  }
+  </script>
+ </head>
+ <body>
+  <nav>
+    <div class="nav-box">
+	  <div class="nav-list" id="list">
+	    <ul>
+		  <li class="current"><a href="javascript:;">首页</a></li>
+		  <li><a href="javascript:;">电视剧</a></li>
+		  <li><a href="javascript:;">电影</a></li>
+		  <li><a href="javascript:;">综艺</a></li>
+		  <li><a href="javascript:;">音乐</a></li>
+		  <li><a href="javascript:;">动漫</a></li>
+		  <li><a href="javascript:;">全部</a></li>
+		  <li><a href="javascript:;">资讯</a></li>
+		  <li><a href="javascript:;">电视剧</a></li>
+		  <li><a href="javascript:;">电视剧</a></li>
+		  <li><a href="javascript:;">电影</a></li>
+		  <li><a href="javascript:;">综艺</a></li>
+		  <li><a href="javascript:;">音乐</a></li>
+		  <li><a href="javascript:;">动漫</a></li>
+		  <li><a href="javascript:;">全部</a></li>
+		  <li><a href="javascript:;">资讯</a></li>
+		  <li><a href="javascript:;">电视剧</a></li>
+		  <li><a href="javascript:;">电视剧</a></li>
+		  <li><a href="javascript:;">电影</a></li>
+		  <li><a href="javascript:;">综艺</a></li>
+		  <li><a href="javascript:;">音乐</a></li>
+		  <li><a href="javascript:;">动漫</a></li>
+		  <li><a href="javascript:;">全部</a></li>
+		  <li><a href="javascript:;">资讯</a></li>
+		  <li><a href="javascript:;">电视剧</a></li>
+		</ul>
+	  </div>
+	</div>
+  </nav>
+ </body>
+</html>

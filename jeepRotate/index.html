@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Jeep</title>
+	<style>
+		*{margin:0; padding:0;}
+		body{background:#000;}
+		#jeep{width:960px; height:400px; position:relative; margin:150px;}
+		#jeep div.img{width:960px; height:400px;}
+		#jeep div.btn{width:93px; height:60px; position:absolute; bottom:35px;}
+		#jeep div.left{left:65px; cursor:pointer;}
+		#jeep div.right{right:65px; cursor:pointer;}
+	</style>
+</head>
+<body>
+	<div id="jeep">
+		<div class="img"><img src="images/1.jpg" alt=""></div>
+		<div class="left btn"></div>
+		<div class="right btn"></div>
+	</div>
+	<script src="js/jquery.js"></script>
+
+	<script>
+	var i=0,time=null;
+		function jeepLeft(){
+			$("#jeep div.left").hover(function(){
+				i++;
+				if(i>35){i=1;}
+				$("#jeep div.img img").attr("src","images/"+i+".jpg");
+			});
+		}
+		// jeepLeft();
+		function jeepRight(){
+			$("#jeep div.right").hover(function(){
+				i--;
+				if(i<1){i=35;}
+				$("#jeep div.img img").attr("src","images/"+i+".jpg");
+			});	
+		}
+		$("#jeep div.left").hover(function(){
+			time=setInterval(function(){
+				jeepLeft();
+			},600);
+		},function(){
+			clearInterval(time);
+		});		
+
+		$("#jeep div.right").hover(function(){
+			time=setInterval(function(){
+				jeepRight();
+			},600);
+		},function(){
+			clearInterval(time);
+		});		
+	</script>
+</body>
+</html>

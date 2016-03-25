@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+    body{
+	  background:#000;
+	}
+    .out{
+	  width:200px; height:303px; perspective:800px; margin:0 auto;
+	}
+	.box{
+	  width:100%; height:100%;
+	  /*
+	  box-reflect:none|<driection><offset>?<mask-box-image>?<direction>=above|below|left|right
+	  <offset>=<length>|<percentage>
+	  <mask-box-image>=none|<url>|<liner-gradient>|<radial-gradient>|<repeating-linear-gradient>|<repeating-radial-gradient>
+	  */
+	  -webkit-transform-style:preserve-3d;
+	}
+	img{
+/*	  -webkit-transform-origin:bottom;*/
+      -webkit-transition:-webkit-transform 2s ease,width 1s ease 2s;
+	  box-shadow:2px 2px 6px #111;
+	  -webkit-box-reflect:below 5px -webkit-gradient(linear,50% 0,50% 100%,color-stop(0,rgba(0,0,0,0)),color-stop(0.5,rgba(0,0,0,0.01)),color-stop(0.8,rgba(0,0,0,0.4)),color-stop(1,rgba(0,0,0,0.8)));
+	  -webkit-transform-origin:center center;
+	}
+	img:hover{
+	  -webkit-transform:rotateX(30deg) rotateY(30deg);
+/*	  box-shadow:5px 5px 10px #ccc;*/
+	 width:400px;
+	}
+  </style>
+ </head>
+ <body>
+  <div class="out">
+    <div class="box">
+	  <img src="3.jpg" width=200 height=303>
+	</div>
+  </div>
+ </body>
+</html>

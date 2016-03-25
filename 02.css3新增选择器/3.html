@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+    .first{ border:1px solid red;}
+    .second{ border:1px solid blue;}
+    .third{ border:1px solid green;}
+	ul,li{list-style:none; padding:0; margin:5px 0;}
+  </style>
+  <style>
+  </style>
+  <script>
+    window.onload=function(){
+	  var selects=document.getElementById("select");
+	  var spans=document.getElementsByTagName("span")[0];
+	  selects.onkeyup=function(){
+	    if(selects.value==""){
+		  return;
+		}else{
+			for(var i=0; i<document.styleSheets[1].cssRules.length; i++){
+			  document.styleSheets[1].deleteRule(i);
+			}
+			var rule=selects.value+spans.innerHTML;
+			document.styleSheets[1].insertRule(rule,0);
+		}
+	  }
+	}
+  </script>
+ </head>
+ <body>
+ <input type="text" id="select">
+  <span>
+    {background:red;}
+  </span>
+  <ul class="first">
+      <span></span>
+	  <li>first-one</li>
+	  <li>first-two</li>
+	  <li>first-three</li>
+	  <li>first-four</li>
+  </ul>
+  <ul class="second">
+	  <li>second-one</li>
+	  <li>second-two</li>
+	  <li>second-three</li>
+	  <li>second-four</li>
+  </ul>
+  <ul class="third">
+	  <li>third-one</li>
+	  <li>third-two</li>
+	  <li>third-three</li>
+	  <li>third-four</li>
+  </ul>
+  <ul class="four">
+      <span></span>
+	  <li>four-one</li>
+  </ul>
+ </body>
+</html>

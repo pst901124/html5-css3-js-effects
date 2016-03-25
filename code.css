@@ -1,0 +1,62 @@
+/*斜线前面的影响的是水平方向，斜线后面影响的是垂直方向，各个数字就分别代表四个不一样的方向。*/
+.one{
+  width:200px; height:100px; border:1px solid red; border-radius: 5px 5px 3px 2px / 5px 5px 1px 3px;
+}
+  input{
+  outline : none;
+}
+ 
+input:focus{
+  outline : none;
+}
+input{
+	outline-offset: 4px ;
+}
+.♥ {
+  color: hotpink;
+}
+
+.★ {
+  color: yellow;
+}
+
+/*选中连续的几个元素*/
+ol li:nth-child(n+7):nth-child(-n+14) {
+  background: lightpink;
+}
+/** Or Safari Way **/
+ol li:nth-child(-n+14):nth-child(n+7) {
+  background: lightpink;
+}
+
+hr:before {
+    content: "♪♪";
+}
+
+hr:after {
+    content: " This is an <hr> element";
+}
+
+/*:before和:after还可以用这两个伪类来修饰 <meta>  和  <link> ，不过这个前提是，你把这两个的 display 属性设置为：block*/
+div[class="box"] {
+  color: blue;
+}
+ 
+input[type="email"] {
+  border: solid 1px red;
+}
+
+
+div[class="BOX"] {
+  color: blue;
+}
+ 
+input[type="EMAIL"] {
+  border: solid 1px red;
+}
+/*
+这变成了大写之后，第一个 class="BOX" 并不会影响到 
+<div class="box"></div> ,而第二个 type="EMAIL" 
+还是会正常修饰 <input type="email"> 。
+所以在使用属性选择器的时候，注意大小写问题。
+*/
